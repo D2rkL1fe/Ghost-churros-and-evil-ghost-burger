@@ -1,10 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://crnxgfctb87i8"]
 
-[ext_resource type="Texture2D" uid="uid://coalm2uh0p0pw" path="res://icon.svg" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/churros.png" id="2_0wfyh"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(0, 2)
-texture = ExtResource("1_o5qli")
+[node name="Churros" type="Sprite2D" parent="."]
+position = Vector2(14, 16)
+texture = ExtResource("2_0wfyh")
