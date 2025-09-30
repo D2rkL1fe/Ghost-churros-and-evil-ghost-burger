@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dahkdou1cgc4w"]
+
+[ext_resource type="Script" uid="uid://b0bj33ehmv133" path="res://character_body_2d.gd" id="1_hrlwh"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/churros.png" id="2_1pats"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0uvp"]
+radius = 8.0
+height = 16.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_hrlwh")
+
+[node name="Churros" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_1pats")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_p0uvp")
