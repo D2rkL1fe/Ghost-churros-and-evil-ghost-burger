@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crnxgfctb87i8"]
 
-[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/churros.png" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="2_sugp2"]
 
 [node name="Main" type="Node2D"]
