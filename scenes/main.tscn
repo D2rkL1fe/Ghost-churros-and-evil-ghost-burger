@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://crnxgfctb87i8"]
+[gd_scene load_steps=8 format=4 uid="uid://crnxgfctb87i8"]
 
 [ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dahkdou1cgc4w" path="res://entities/churros/churros.tscn" id="3_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://bdurqkrgpsh6p" path="res://scenes/tilemap-basic.png" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://bqsmfc7egdln" path="res://scenes/UI.gd" id="5_tbgi4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
 texture = ExtResource("4_jyhfs")
@@ -38,3 +39,16 @@ position = Vector2(24, 32)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD9//z/AAABAAEAAAD9//v/AAABAAEAAAD8//v/AAABAAEAAAD7//v/AAABAAEAAAD6//v/AAABAAEAAAD5//v/AAABAAEAAAD5//z/AAABAAEAAAD5//3/AAABAAEAAAD6//3/AAABAAEAAAD6//7/AAABAAIAAAD7//7/AAABAAIAAAD8//7/AAABAAIAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD8//z/AAABAAEAAAD7//z/AAABAAEAAAD6//z/AAABAAEAAAD7//3/AAABAAEAAAD5//r/AAABAAAAAAD6//r/AAABAAAAAAD7//r/AAABAAAAAAD8//r/AAABAAAAAAD9//r/AAABAAAAAAD+//r/AAACAAAAAAD+//v/AAACAAEAAAD+//z/AAACAAEAAAD+//3/AAACAAEAAAD+//7/AAACAAIAAAD9//7/AAABAAIAAAD5//7/AAABAAIAAAD4//3/AAAAAAEAAAD4//z/AAAAAAEAAAD4//v/AAAAAAEAAAD4//r/AAAAAAAAAAD4//7/AAAAAAIAAAAFAPz/AAAAAAAAAAAGAPz/AAABAAAAAAAHAPv/AAAAAAAAAAAIAPv/AAABAAAAAAAJAPr/AAAAAAAAAAAKAPn/AAAAAAAAAAALAPj/AAAAAAAAAAAMAPf/AAAAAAAAAAAGAP3/AAABAAIAAAAHAP3/AAABAAIAAAAHAPz/AAABAAEAAAAIAPz/AAABAAEAAAAIAP3/AAABAAIAAAAJAP3/AAABAAIAAAAJAPz/AAABAAEAAAAKAPz/AAABAAEAAAALAPz/AAABAAEAAAAMAPz/AAABAAEAAAAMAPv/AAABAAEAAAAMAPr/AAABAAEAAAAMAPn/AAABAAEAAAAMAPj/AAABAAEAAAAMAP3/AAABAAIAAAALAP3/AAABAAIAAAAKAP3/AAABAAIAAAALAPv/AAABAAEAAAALAPr/AAABAAEAAAALAPn/AAABAAEAAAAKAPr/AAABAAEAAAAKAPv/AAABAAEAAAAJAPv/AAABAAEAAAAFAP3/AAAAAAIAAAANAPf/AAACAAAAAAANAPj/AAACAAEAAAANAPn/AAACAAEAAAANAPr/AAACAAEAAAANAPv/AAACAAEAAAANAPz/AAACAAEAAAANAP3/AAACAAIAAAA=")
 tile_set = SubResource("TileSet_tefeu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("5_tbgi4")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 386.0
+offset_top = 2.0
+offset_right = 453.0
+offset_bottom = 25.0
+text = "Churros: "
+
+[connection signal="visibility_changed" from="CanvasLayer" to="Player" method="_on_canvas_layer_visibility_changed"]
