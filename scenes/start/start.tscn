@@ -61,20 +61,20 @@ texture = ExtResource("1_662lp")
 expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-anchor_right = 1.525
-anchor_bottom = 0.14814815
-offset_right = -692.0
-metadata/_edit_use_anchors_ = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 
 [node name="StoryLabel" type="Label" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "Once upon a time there was a lonely,  so he made mazna burgers and mazna all over the world
-
-                                                                                                                                                              - DPH888"
+size_flags_vertical = 1
+text = "Once upon a time there was a lonely,  so he made mazna burgers and mazna all over the world"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

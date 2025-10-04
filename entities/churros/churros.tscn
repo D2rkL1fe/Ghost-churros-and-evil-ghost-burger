@@ -1,28 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dahkdou1cgc4w"]
 
-[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="2_7j867"]
-
-[sub_resource type="GDScript" id="GDScript_4vjtx"]
-script/source = "extends CharacterBody2D
-
-# Основни свойства на Чуроса
-var churro_name: String = \"Чурос\"
-var heal_amount: int = 10        # колко живот връща
-var value: int = 1               # колко точки носи
-var is_collected: bool = false   # дали вече е взет
-
-# Декоративни свойства
-var rotation_speed: float = 60.0 # въртене за ефект
-var float_height: float = 5.0    # височина на поклащане
-var float_speed: float = 2.0     # колко бързо се поклаща
-"
+[ext_resource type="Script" uid="uid://iavdtf1h3tqp" path="res://entities/churros/churros.gd" id="1_i1ufe"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/churros.png" id="2_7j867"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0uvp"]
 radius = 8.0
 height = 16.0
 
 [node name="Churros" type="CharacterBody2D"]
-script = SubResource("GDScript_4vjtx")
+script = ExtResource("1_i1ufe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
