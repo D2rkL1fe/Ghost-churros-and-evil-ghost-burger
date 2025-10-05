@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dahkdou1cgc4w"]
+[gd_scene load_steps=9 format=3 uid="uid://dahkdou1cgc4w"]
 
 [ext_resource type="Script" uid="uid://iavdtf1h3tqp" path="res://entities/churros/churros.gd" id="1_i1ufe"]
-[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/churros.png" id="2_7j867"]
-[ext_resource type="Gradient" path="res://entities/churros/" id="3_5i625"]
-[ext_resource type="Script" uid="uid://c7xqmrt6150vr" path="res://entities/churros/curros_particles_2d.gd" id="3_7j867"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="2_7j867"]
 
 [sub_resource type="Gradient" id="Gradient_5i625"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -18,10 +16,29 @@ fill_to = Vector2(0.7009346, 0.317757)
 radius = 8.0
 height = 16.0
 
+[sub_resource type="Gradient" id="Gradient_i1ufe"]
+offsets = PackedFloat32Array(0.020547945, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i1ufe"]
+gradient = SubResource("Gradient_i1ufe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7j867"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -15, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0.95281494, 0.8548469, 0.9063318, 1)
+color_ramp = SubResource("GradientTexture1D_i1ufe")
+
 [node name="Churros" type="CharacterBody2D"]
 script = ExtResource("1_i1ufe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("2_7j867")
@@ -39,28 +56,15 @@ texture_scale = 1.01
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_p0uvp")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-z_index = -1
-texture_filter = 1
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, -8)
-amount = 30
-lifetime = 1.19
+amount = 24
+lifetime = 0.5
 preprocess = 0.5
 speed_scale = 0.2
 explosiveness = 0.05
-spread = 180.0
-gravity = Vector2(0, -15)
-initial_velocity_min = 50.0
-initial_velocity_max = 50.0
-scale_amount_min = 2.0
-scale_amount_max = 2.0
-color = Color(1, 0.9529412, 0.85490197, 1)
-color_ramp = ExtResource("3_5i625")
-script = ExtResource("3_7j867")
-react_to_movement = null
-base_amount = null
-max_extra_amount = null
-base_initial_velocity = null
-max_extra_initial_velocity = null
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_7j867")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
