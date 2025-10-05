@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqwggfiop21ya"]
+[gd_scene load_steps=8 format=3 uid="uid://cqwggfiop21ya"]
 
 [ext_resource type="Texture2D" uid="uid://5ebb8y85cnlk" path="res://output-onlinepngtools.png" id="1_662lp"]
 [ext_resource type="PackedScene" uid="uid://dahkdou1cgc4w" path="res://entities/churros/churros.tscn" id="2_oeh0t"]
@@ -39,6 +39,15 @@ _data = {
 &"Intro": SubResource("Animation_oeh0t"),
 &"RESET": SubResource("Animation_ae20m")
 }
+
+[sub_resource type="Gradient" id="Gradient_i1ufe"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ae20m"]
+gradient = SubResource("Gradient_i1ufe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7009346, 0.317757)
 
 [node name="Start" type="Control"]
 layout_mode = 3
@@ -85,3 +94,10 @@ autoplay = "Intro"
 
 [node name="Churros" parent="." instance=ExtResource("2_oeh0t")]
 position = Vector2(162, 163)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Churros"]
+position = Vector2(0, -8)
+color = Color(0.76624745, 0.65438247, 0, 1)
+energy = 0.55
+texture = SubResource("GradientTexture2D_ae20m")
+texture_scale = 1.01
