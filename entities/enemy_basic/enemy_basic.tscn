@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://uq7pcty8pgyk"]
+[gd_scene load_steps=12 format=3 uid="uid://uq7pcty8pgyk"]
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
-[ext_resource type="Texture2D" uid="uid://c2s4abbkqeude" path="res://entities/enemy_basic/run/enemy_basic_run.png" id="2_6ruqu"]
-[ext_resource type="Texture2D" uid="uid://ct5pbxxtbn0gf" path="res://entities/enemy_basic/onion_ring.png" id="3_5ve1f"]
+[ext_resource type="Texture2D" uid="uid://bdurqkrgpsh6p" path="res://scenes/tilemap-basic.png" id="3_64cy1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ruqu"]
 atlas = ExtResource("1_eilgt")
@@ -20,30 +19,6 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypg6x"]
 atlas = ExtResource("1_eilgt")
 region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y300u"]
-atlas = ExtResource("2_6ruqu")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qdgo6"]
-atlas = ExtResource("2_6ruqu")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ed0gp"]
-atlas = ExtResource("2_6ruqu")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mun3"]
-atlas = ExtResource("2_6ruqu")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k67v4"]
-atlas = ExtResource("2_6ruqu")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ylhma"]
-atlas = ExtResource("2_6ruqu")
-region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y300u"]
 animations = [{
@@ -63,29 +38,6 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y300u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qdgo6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ed0gp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3mun3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k67v4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ylhma")
-}],
-"loop": true,
-"name": &"run",
-"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eilgt"]
@@ -95,50 +47,11 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ve1f"]
 size = Vector2(48, 49)
 
-[sub_resource type="Animation" id="Animation_5ve1f"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 20.943951023931955]
-}
-
-[sub_resource type="Animation" id="Animation_64cy1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ypg6x"]
-_data = {
-&"RESET": SubResource("Animation_64cy1"),
-&"idle": SubResource("Animation_5ve1f")
-}
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ve1f"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = -45.0
-initial_velocity_max = 90.0
-angular_velocity_min = -304.94
-angular_velocity_max = 152.46999
+initial_velocity_min = 100.0
+initial_velocity_max = 182.34999
 gravity = Vector3(0, 98, 0)
 
 [node name="EnemyBasic" type="CharacterBody2D"]
@@ -146,6 +59,25 @@ script = ExtResource("1_5ve1f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y300u")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.34314907
+frame_progress = 0.5785441
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_eilgt")
+
+[node name="Shockwave" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Shockwave"]
+texture = ExtResource("3_64cy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shockwave"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5ve1f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Shockwave"]
+visible = false
+amount = 24
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5ve1f")
