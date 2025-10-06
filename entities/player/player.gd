@@ -16,12 +16,19 @@ func _physics_process(_delta: float) -> void:
 	velocity = input_dir * speed
 	move_and_slide()
 
-# Called when hit by shockwave
+@onready var flash_tween := create_tween()
+
 func take_damage(amount: int) -> void:
 	health -= amount
 	print("Player took damage:", amount, " | HP:", health)
+	if sprite:
+		flash_tween.kill() # stop any ongoing flash
+		flash_tween = get_tree().create_tween()
+		flash_tween.tween_property(sprite, "modulate", Color(1,0.3,0.3), 0.1)
+		flash_tween.tween_property(sprite, "modulate", Color(1,1,1), 0.2)
 	if health <= 0:
 		die()
+
 
 func apply_knockback(force: Vector2) -> void:
 	velocity += force

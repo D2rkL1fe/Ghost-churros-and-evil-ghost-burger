@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct5pbxxtbn0gf"
-path="res://.godot/imported/onion_ring.png-3b3a6f28ccf145a1ec17c7cc4a5c2309.ctex"
+uid="uid://u37p1lj63k7m"
+path="res://.godot/imported/pixel_art_small (2).png-62d042de84d1dd510e5cdcb54b19a779.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemy_basic/onion_ring.png"
-dest_files=["res://.godot/imported/onion_ring.png-3b3a6f28ccf145a1ec17c7cc4a5c2309.ctex"]
+source_file="res://entities/enemy_basic/pixel_art_small (2).png"
+dest_files=["res://.godot/imported/pixel_art_small (2).png-62d042de84d1dd510e5cdcb54b19a779.ctex"]
 
 [params]
 

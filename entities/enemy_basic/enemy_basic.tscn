@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://uq7pcty8pgyk"]
+[gd_scene load_steps=15 format=3 uid="uid://uq7pcty8pgyk"]
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
-[ext_resource type="Texture2D" uid="uid://bdurqkrgpsh6p" path="res://scenes/tilemap-basic.png" id="3_64cy1"]
+[ext_resource type="Texture2D" uid="uid://b5u3rfehd1mxb" path="res://entities/enemy_basic/Blast explosion.png" id="3_5ve1f"]
+[ext_resource type="Texture2D" uid="uid://u37p1lj63k7m" path="res://entities/enemy_basic/pixel_art_small (2).png" id="4_64cy1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ruqu"]
 atlas = ExtResource("1_eilgt")
@@ -44,17 +45,30 @@ animations = [{
 radius = 7.0
 height = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ve1f"]
-size = Vector2(48, 49)
+[sub_resource type="CircleShape2D" id="CircleShape2D_64cy1"]
+radius = 15.0
+
+[sub_resource type="Gradient" id="Gradient_ypg6x"]
+offsets = PackedFloat32Array(0, 0.33050847, 0.6440678, 1)
+colors = PackedColorArray(0.9, 1, 0, 1, 1, 0.7, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y300u"]
+gradient = SubResource("Gradient_ypg6x")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ve1f"]
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 300.0
 spread = 180.0
-initial_velocity_min = 100.0
-initial_velocity_max = 182.34999
-gravity = Vector3(0, 98, 0)
+initial_velocity_min = 51.91
+initial_velocity_max = 80.89
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_max = 0.79999995
+color_ramp = SubResource("GradientTexture1D_y300u")
 
-[node name="EnemyBasic" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5ve1f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -70,14 +84,20 @@ shape = SubResource("CapsuleShape2D_eilgt")
 [node name="Shockwave" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Shockwave"]
-texture = ExtResource("3_64cy1")
+position = Vector2(2.2499974, -1.1920929e-06)
+scale = Vector2(0.72656244, 0.71875)
+texture = ExtResource("3_5ve1f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shockwave"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_5ve1f")
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_64cy1")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Shockwave"]
-visible = false
-amount = 24
+[node name="FireParticles" type="GPUParticles2D" parent="Shockwave"]
+emitting = false
+amount = 40
+texture = ExtResource("4_64cy1")
+lifetime = 0.48
+one_shot = true
+speed_scale = 0.38
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_5ve1f")
