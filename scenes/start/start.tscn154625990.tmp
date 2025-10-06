@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqwggfiop21ya"]
 
 [ext_resource type="Texture2D" uid="uid://5ebb8y85cnlk" path="res://output-onlinepngtools.png" id="1_662lp"]
-[ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="2_oeh0t"]
+[ext_resource type="PackedScene" uid="uid://dahkdou1cgc4w" path="res://entities/churros/churros.tscn" id="2_oeh0t"]
 
 [sub_resource type="Animation" id="Animation_oeh0t"]
 resource_name = "Intro"
@@ -83,5 +83,5 @@ libraries = {
 }
 autoplay = "Intro"
 
-[node name="Player" parent="." instance=ExtResource("2_oeh0t")]
-position = Vector2(223, 140)
+[node name="Churros" parent="." instance=ExtResource("2_oeh0t")]
+position = Vector2(162, 163)
