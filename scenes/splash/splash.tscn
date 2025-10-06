@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cma371h3g76ib"]
+
+[ext_resource type="Script" uid="uid://v8unjbdkkh0m" path="res://scenes/splash/splash.gd" id="1_cwtag"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="1_i52gs"]
+
+[sub_resource type="Animation" id="Animation_cwtag"]
+resource_name = "splash"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.6666667, 1.6333333, 2.6333334, 3),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(209, 279), Vector2(211, 17), Vector2(209, 65), Vector2(210, 117), Vector2(209, 87), Vector2(213, 298)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"transition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_y4437"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(209, 279)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwhxh"]
+_data = {
+&"RESET": SubResource("Animation_y4437"),
+&"splash": SubResource("Animation_cwtag")
+}
+
+[node name="Splash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwtag")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 279.0
+offset_right = 249.0
+offset_bottom = 319.0
+texture = ExtResource("1_i52gs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wwhxh")
+}
+autoplay = "splash"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://uq7pcty8pgyk"]
+[gd_scene load_steps=14 format=3 uid="uid://uq7pcty8pgyk"]
 
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
+[ext_resource type="Texture2D" uid="uid://c2s4abbkqeude" path="res://entities/enemy_basic/run/enemy_basic_run.png" id="2_6ruqu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ruqu"]
 atlas = ExtResource("1_eilgt")
@@ -17,6 +18,30 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypg6x"]
 atlas = ExtResource("1_eilgt")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y300u"]
+atlas = ExtResource("2_6ruqu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdgo6"]
+atlas = ExtResource("2_6ruqu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed0gp"]
+atlas = ExtResource("2_6ruqu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mun3"]
+atlas = ExtResource("2_6ruqu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k67v4"]
+atlas = ExtResource("2_6ruqu")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylhma"]
+atlas = ExtResource("2_6ruqu")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y300u"]
 animations = [{
@@ -36,12 +61,35 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y300u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdgo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed0gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mun3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k67v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylhma")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
 }]
 
 [node name="EnemyBasic" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y300u")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.5785441
+frame_progress = 0.34314907

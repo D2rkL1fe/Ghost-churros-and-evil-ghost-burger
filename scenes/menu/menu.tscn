@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://xk6dawr05fvj"]
+
+[ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="1_klgdb"]
+[ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_mcvr8"]
+[ext_resource type="Script" uid="uid://dxcorw122thxi" path="res://scenes/menu/menu.gd" id="2_e0arn"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mcvr8")
+script = ExtResource("2_e0arn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0.8900428, 0.5290847, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_klgdb")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -25.0
+offset_right = 104.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Mazna"
+horizontal_alignment = 1
+
+[node name="Action" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Press any BUTTON to start!"
+horizontal_alignment = 1
