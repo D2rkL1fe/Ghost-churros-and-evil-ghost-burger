@@ -1,4 +1,6 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
+
+@export var sprite : AnimatedSprite2D
 
 @export var speed: float = 150.0
 @onready var cam: Camera2D = $Camera2D
@@ -6,7 +8,11 @@ extends CharacterBody2D
 var health: int = 100
 
 func _physics_process(_delta: float) -> void:
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir = Input.get_vector("left", "right", "up", "down")
+	
+	if input_dir.x:
+		sprite.flip_h = input_dir.x < 0
+	
 	velocity = input_dir * speed
 	move_and_slide()
 
@@ -22,4 +28,6 @@ func apply_knockback(force: Vector2) -> void:
 
 func die() -> void:
 	print("Player died!")
-	queue_free()
+	
+	get_tree().change_scene_to_file("res://scenes/start/start.tscn")
+	#get_tree().reload_current_scene()
