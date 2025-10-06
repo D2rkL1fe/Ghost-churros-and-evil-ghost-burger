@@ -7,6 +7,7 @@ var original_offset := Vector2.ZERO
 
 func _ready() -> void:
 	original_offset = offset
+	add_to_group("camera")
 
 func _process(_delta: float) -> void:
 	if shake_timer < shake_duration:
