@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dahkdou1cgc4w"]
 
 [ext_resource type="Script" uid="uid://iavdtf1h3tqp" path="res://entities/churros/churros.gd" id="1_i1ufe"]
-[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/churros.png" id="2_7j867"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="2_7j867"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0uvp"]
 radius = 8.0

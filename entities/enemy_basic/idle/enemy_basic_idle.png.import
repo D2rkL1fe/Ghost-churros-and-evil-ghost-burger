@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cndlc33h6jvus"
-path="res://.godot/imported/churros.png-493b684707daff93e2bd45e6e516b811.ctex"
+uid="uid://bmuai4oqjtwg4"
+path="res://.godot/imported/enemy_basic_idle.png-d0e7ede6933fd228d0ebb543b2ddc2e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/churros/churros.png"
-dest_files=["res://.godot/imported/churros.png-493b684707daff93e2bd45e6e516b811.ctex"]
+source_file="res://entities/enemy_basic/idle/enemy_basic_idle.png"
+dest_files=["res://.godot/imported/enemy_basic_idle.png-d0e7ede6933fd228d0ebb543b2ddc2e1.ctex"]
 
 [params]
 

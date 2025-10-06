@@ -114,7 +114,13 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_qiwj3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -360
+limit_top = -203
+limit_right = 360
+limit_bottom = 203
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 script = ExtResource("4_bls4j")
+target_path = NodePath("..")
+funky_strength = 6.0
