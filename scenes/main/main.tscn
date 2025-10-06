@@ -86,4 +86,7 @@ position = Vector2(176, 45)
 [node name="EnemyBasic3" parent="." instance=ExtResource("7_hujxm")]
 position = Vector2(165, 141)
 
+[node name="EnemyBasic4" parent="." instance=ExtResource("7_hujxm")]
+position = Vector2(328, 164)
+
 [connection signal="visibility_changed" from="CanvasLayer" to="Player" method="_on_canvas_layer_visibility_changed"]
