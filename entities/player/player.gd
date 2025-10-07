@@ -36,5 +36,5 @@ func apply_knockback(force: Vector2) -> void:
 func die() -> void:
 	print("Player died!")
 	
-	get_tree().change_scene_to_file("res://scenes/start/start.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/start/start.tscn")
 	#get_tree().reload_current_scene()

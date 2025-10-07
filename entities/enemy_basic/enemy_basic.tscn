@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
-[ext_resource type="Texture2D" uid="uid://b5u3rfehd1mxb" path="res://entities/enemy_basic/Blast explosion.png" id="3_5ve1f"]
+[ext_resource type="Texture2D" uid="uid://7g5dymi7nky2" path="res://entities/enemy_basic/fire_ring.png" id="3_64cy1"]
 [ext_resource type="Texture2D" uid="uid://u37p1lj63k7m" path="res://entities/enemy_basic/pixel_art_small (2).png" id="4_64cy1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ruqu"]
@@ -86,7 +86,7 @@ shape = SubResource("CapsuleShape2D_eilgt")
 [node name="Sprite2D" type="Sprite2D" parent="Shockwave"]
 position = Vector2(2.2499974, -1.1920929e-06)
 scale = Vector2(0.72656244, 0.71875)
-texture = ExtResource("3_5ve1f")
+texture = ExtResource("3_64cy1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shockwave"]
 position = Vector2(1, 0)
