@@ -9,9 +9,9 @@ func _ready() -> void:
 	original_offset = offset
 	add_to_group("camera")
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if shake_timer < shake_duration:
-		shake_timer += _delta
+		shake_timer += delta
 		offset = original_offset + Vector2(
 			randf_range(-shake_intensity, shake_intensity),
 			randf_range(-shake_intensity, shake_intensity)
