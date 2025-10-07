@@ -72,7 +72,7 @@ func attack() -> void:
 	shockwave_shape.scale = Vector2(0.1, 0.1)
 
 	if aura_particles:
-		aura_particles.emitting = false
+		aura_particles.emitting = true
 		aura_particles.restart()
 
 	if cam and cam.has_method("shake"):
