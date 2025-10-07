@@ -49,7 +49,17 @@ func _physics_process(_delta: float) -> void:
 	if not player:
 		return
 	var to_player := player.global_position - global_position
-	velocity = to_player.normalized() * move_speed if to_player.length() <= detection_radius else Vector2.ZERO
+	
+	if to_player.length() <= detection_radius:
+		velocity = to_player.normalized() * move_speed
+		sprite.flip_h = to_player.x < 0
+		
+		sprite.play("run")
+	else:
+		velocity =  Vector2.ZERO
+		
+		sprite.play("idle")
+	
 	move_and_slide()
 
 func _process(_delta: float) -> void:
@@ -79,6 +89,7 @@ func attack() -> void:
 		cam.shake(10.0, 0.25)
 
 	var tween := get_tree().create_tween()
+	tween.set_parallel()
 	tween.tween_property(aura_sprite, "scale", Vector2(shockwave_max_scale, shockwave_max_scale), shockwave_scale_time)
 	tween.tween_property(shockwave_shape, "scale", Vector2(shockwave_max_scale, shockwave_max_scale), shockwave_scale_time)
 	tween.tween_property(aura_sprite, "modulate:a", 0.0, shockwave_scale_time)
