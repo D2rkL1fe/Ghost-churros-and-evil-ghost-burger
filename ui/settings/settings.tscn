@@ -3,7 +3,12 @@
 [ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_bjc66"]
 [ext_resource type="Script" uid="uid://cgcaxbsxs7e2j" path="res://ui/settings/settings.gd" id="2_hrs25"]
 
-[node name="Settings" type="Control"]
+[node name="Settings" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+
+[node name="Settings" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,92 +18,92 @@ grow_vertical = 2
 theme = ExtResource("1_bjc66")
 script = ExtResource("2_hrs25")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="Settings"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -20.0
-offset_right = 35.0
-offset_bottom = 20.0
+offset_left = -89.0
+offset_top = -80.0
+offset_right = 89.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Settings/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxType" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxType" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="SFX" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxType"]
+[node name="SFX" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxType"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "SFX"
 
-[node name="Music" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxType"]
+[node name="Music" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxType"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "Music"
 
-[node name="VBoxSlider" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxSlider" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="SliderSFX" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider"]
+[node name="SliderSFX" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider"]
 layout_mode = 2
 size_flags_vertical = 3
 value = 100.0
 
-[node name="SliderMusic" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider"]
+[node name="SliderMusic" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider"]
 layout_mode = 2
 size_flags_vertical = 3
 value = 100.0
 
-[node name="VBoxCheck" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxCheck" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="CheckSFX" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck"]
-layout_mode = 2
-size_flags_vertical = 3
-button_pressed = true
-
-[node name="CheckMusic" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck"]
+[node name="CheckSFX" type="CheckBox" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck"]
 layout_mode = 2
 size_flags_vertical = 3
 button_pressed = true
 
-[node name="HBoxButton" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CheckMusic" type="CheckBox" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck"]
+layout_mode = 2
+size_flags_vertical = 3
+button_pressed = true
+
+[node name="HBoxButton" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
+[node name="Restart" type="Button" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
 layout_mode = 2
 text = "Restart"
 
-[node name="Menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
+[node name="Menu" type="Button" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
 layout_mode = 2
 text = "Menu"
 
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderMusic" to="." method="_on_slider_music_value_changed"]
-[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckSFX" to="." method="_on_check_sfx_toggled"]
-[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckMusic" to="." method="_on_check_music_toggled"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" to="." method="_on_menu_pressed"]
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderMusic" to="." method="_on_slider_music_value_changed"]
+[connection signal="toggled" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckSFX" to="." method="_on_check_sfx_toggled"]
+[connection signal="toggled" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckMusic" to="." method="_on_check_music_toggled"]
+[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" to="." method="_on_menu_pressed"]

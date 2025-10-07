@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://uq7pcty8pgyk"]
+[gd_scene load_steps=23 format=3 uid="uid://uq7pcty8pgyk"]
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
@@ -116,6 +116,13 @@ scale_min = 0.39999998
 scale_max = 0.79999995
 color_ramp = SubResource("GradientTexture1D_y300u")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ypg6x"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 23.529999
+initial_velocity_max = 129.41
+gravity = Vector3(0, 98, 0)
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5ve1f")
 move_speed = 80.0
@@ -124,7 +131,7 @@ move_speed = 80.0
 sprite_frames = SubResource("SpriteFrames_y300u")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.7084327
+frame_progress = 0.86359143
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -145,8 +152,16 @@ shape = SubResource("CircleShape2D_64cy1")
 emitting = false
 amount = 40
 texture = ExtResource("4_64cy1")
-lifetime = 0.48
+lifetime = 0.2
 one_shot = true
 speed_scale = 0.38
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_5ve1f")
+
+[node name="TestParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 24
+lifetime = 0.55
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ypg6x")

@@ -16,6 +16,8 @@ extends CharacterBody2D
 @onready var aura_particles: GPUParticles2D = $Shockwave/FireParticles
 @onready var cam: Camera2D = get_tree().get_first_node_in_group("camera")
 
+@onready var test_particles: GPUParticles2D = $TestParticles
+
 var player: Node2D = null
 var can_attack: bool = true
 var rng := RandomNumberGenerator.new()
@@ -82,8 +84,9 @@ func attack() -> void:
 	shockwave_shape.scale = Vector2(0.1, 0.1)
 
 	if aura_particles:
-		aura_particles.emitting = true
 		aura_particles.restart()
+
+	test_particles.emitting = true
 
 	if cam and cam.has_method("shake"):
 		cam.shake(10.0, 0.25)
