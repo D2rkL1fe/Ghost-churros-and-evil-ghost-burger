@@ -83,14 +83,20 @@ func attack() -> void:
 	aura_sprite.scale = Vector2(0.1, 0.1)
 	shockwave_shape.scale = Vector2(0.1, 0.1)
 
+	# audio
+	SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
+	
+	# particles
 	if aura_particles:
 		aura_particles.restart()
 
 	test_particles.emitting = true
-
+	
+	# camera shaky shaky
 	if cam and cam.has_method("shake"):
 		cam.shake(10.0, 0.25)
 
+	# war crimes
 	var tween := get_tree().create_tween()
 	tween.set_parallel()
 	tween.tween_property(aura_sprite, "scale", Vector2(shockwave_max_scale, shockwave_max_scale), shockwave_scale_time)

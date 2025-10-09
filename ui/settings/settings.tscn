@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://8tig1u3sfa6y"]
+[gd_scene load_steps=4 format=3 uid="uid://8tig1u3sfa6y"]
 
 [ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_bjc66"]
 [ext_resource type="Script" uid="uid://cgcaxbsxs7e2j" path="res://ui/settings/settings.gd" id="2_hrs25"]
+[ext_resource type="PackedScene" uid="uid://vw45rcktv2je" path="res://components/ButtonComponent/button_component.tscn" id="3_fayoa"]
 
 [node name="Settings" type="CanvasLayer"]
 process_mode = 3
@@ -97,13 +98,17 @@ size_flags_horizontal = 4
 layout_mode = 2
 text = "Restart"
 
+[node name="ButtonComponent" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" instance=ExtResource("3_fayoa")]
+
 [node name="Menu" type="Button" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
 layout_mode = 2
 text = "Menu"
 
-[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
-[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderMusic" to="." method="_on_slider_music_value_changed"]
-[connection signal="toggled" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckSFX" to="." method="_on_check_sfx_toggled"]
-[connection signal="toggled" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckMusic" to="." method="_on_check_music_toggled"]
-[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" to="." method="_on_menu_pressed"]
+[node name="ButtonComponent" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" instance=ExtResource("3_fayoa")]
+
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderSFX" to="Settings" method="_on_slider_sfx_value_changed"]
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider/SliderMusic" to="Settings" method="_on_slider_music_value_changed"]
+[connection signal="toggled" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckSFX" to="Settings" method="_on_check_sfx_toggled"]
+[connection signal="toggled" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxCheck/CheckMusic" to="Settings" method="_on_check_music_toggled"]
+[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" to="Settings" method="_on_restart_pressed"]
+[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" to="Settings" method="_on_menu_pressed"]

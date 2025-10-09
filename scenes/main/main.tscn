@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://crnxgfctb87i8"]
+[gd_scene load_steps=12 format=4 uid="uid://crnxgfctb87i8"]
 
 [ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="2_ow5a4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="6_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://uq7pcty8pgyk" path="res://entities/enemy_basic/enemy_basic.tscn" id="7_hujxm"]
 [ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="7_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://yh4pl3xixecn" path="res://ui/death_screen/death_screen.tscn" id="9_b1x3f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
 texture = ExtResource("4_yyfjg")
@@ -32,31 +33,47 @@ texture = ExtResource("1_6q06x")
 region_enabled = true
 region_rect = Rect2(0, 0, 720, 405)
 
-[node name="Player" parent="." instance=ExtResource("2_ow5a4")]
-position = Vector2(49, 43)
-
-[node name="Churros" parent="." instance=ExtResource("3_hujxm")]
-position = Vector2(24, 32)
-
-[node name="Churros2" parent="." instance=ExtResource("3_hujxm")]
-position = Vector2(113, 63)
-
-[node name="Churros3" parent="." instance=ExtResource("3_hujxm")]
-position = Vector2(33, 154)
-
-[node name="Churros4" parent="." instance=ExtResource("3_hujxm")]
-position = Vector2(258, 94)
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 visible = false
 tile_map_data = PackedByteArray("AAD9//z/AAABAAEAAAD9//v/AAABAAEAAAD8//v/AAABAAEAAAD7//v/AAABAAEAAAD6//v/AAABAAEAAAD5//v/AAABAAEAAAD5//z/AAABAAEAAAD5//3/AAABAAEAAAD6//3/AAABAAEAAAD6//7/AAABAAIAAAD7//7/AAABAAIAAAD8//7/AAABAAIAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD8//z/AAABAAEAAAD7//z/AAABAAEAAAD6//z/AAABAAEAAAD7//3/AAABAAEAAAD5//r/AAABAAAAAAD6//r/AAABAAAAAAD7//r/AAABAAAAAAD8//r/AAABAAAAAAD9//r/AAABAAAAAAD+//r/AAACAAAAAAD+//v/AAACAAEAAAD+//z/AAACAAEAAAD+//3/AAACAAEAAAD+//7/AAACAAIAAAD9//7/AAABAAIAAAD5//7/AAABAAIAAAD4//3/AAAAAAEAAAD4//z/AAAAAAEAAAD4//v/AAAAAAEAAAD4//r/AAAAAAAAAAD4//7/AAAAAAIAAAAFAPz/AAAAAAAAAAAGAPz/AAABAAAAAAAHAPv/AAAAAAAAAAAIAPv/AAABAAAAAAAJAPr/AAAAAAAAAAAKAPn/AAAAAAAAAAALAPj/AAAAAAAAAAAMAPf/AAAAAAAAAAAGAP3/AAABAAIAAAAHAP3/AAABAAIAAAAHAPz/AAABAAEAAAAIAPz/AAABAAEAAAAIAP3/AAABAAIAAAAJAP3/AAABAAIAAAAJAPz/AAABAAEAAAAKAPz/AAABAAEAAAALAPz/AAABAAEAAAAMAPz/AAABAAEAAAAMAPv/AAABAAEAAAAMAPr/AAABAAEAAAAMAPn/AAABAAEAAAAMAPj/AAABAAEAAAAMAP3/AAABAAIAAAALAP3/AAABAAIAAAAKAP3/AAABAAIAAAALAPv/AAABAAEAAAALAPr/AAABAAEAAAALAPn/AAABAAEAAAAKAPr/AAABAAEAAAAKAPv/AAABAAEAAAAJAPv/AAABAAEAAAAFAP3/AAAAAAIAAAANAPf/AAACAAAAAAANAPj/AAACAAEAAAANAPn/AAACAAEAAAANAPr/AAACAAEAAAANAPv/AAACAAEAAAANAPz/AAACAAEAAAANAP3/AAACAAIAAAA=")
 tile_set = SubResource("TileSet_tefeu")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("label")]
+[node name="Player" parent="." instance=ExtResource("2_ow5a4")]
+position = Vector2(1, 6)
+
+[node name="Churro" type="Node" parent="."]
+
+[node name="Churros" parent="Churro" instance=ExtResource("3_hujxm")]
+position = Vector2(-165, -76)
+
+[node name="Churros2" parent="Churro" instance=ExtResource("3_hujxm")]
+position = Vector2(96, -44)
+
+[node name="Churros3" parent="Churro" instance=ExtResource("3_hujxm")]
+position = Vector2(-193, 93)
+
+[node name="Churros4" parent="Churro" instance=ExtResource("3_hujxm")]
+position = Vector2(159, 56)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemyBasic" parent="Enemies" instance=ExtResource("7_hujxm")]
+position = Vector2(-99, -111)
+
+[node name="EnemyBasic2" parent="Enemies" instance=ExtResource("7_hujxm")]
+position = Vector2(149, -64)
+
+[node name="EnemyBasic3" parent="Enemies" instance=ExtResource("7_hujxm")]
+position = Vector2(-220, 54)
+
+[node name="EnemyBasic4" parent="Enemies" instance=ExtResource("7_hujxm")]
+position = Vector2(111, 120)
+
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("label")]
 script = ExtResource("5_b1x3f")
 label = NodePath("Control/MarginContainer/HBoxContainer/Label")
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +82,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_ow5a4")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -74,28 +91,18 @@ offset_left = -124.0
 offset_bottom = 25.0
 grow_horizontal = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("7_yyfjg")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Churros: 0"
 
-[node name="EnemyBasic" parent="." instance=ExtResource("7_hujxm")]
-position = Vector2(70, 101)
+[node name="DeathScreen" parent="UI" instance=ExtResource("9_b1x3f")]
 
-[node name="EnemyBasic2" parent="." instance=ExtResource("7_hujxm")]
-position = Vector2(176, 45)
-
-[node name="EnemyBasic3" parent="." instance=ExtResource("7_hujxm")]
-position = Vector2(165, 141)
-
-[node name="EnemyBasic4" parent="." instance=ExtResource("7_hujxm")]
-position = Vector2(328, 164)
-
-[connection signal="visibility_changed" from="CanvasLayer" to="Player" method="_on_canvas_layer_visibility_changed"]
+[connection signal="visibility_changed" from="UI" to="Player" method="_on_canvas_layer_visibility_changed"]

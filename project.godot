@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalStats="*res://GlobalStats.gd"
+GlobalStats="*res://globals/GlobalStats.gd"
 Settings="*res://ui/settings/settings.tscn"
+SoundPlayer="*res://globals/SoundPlayer/sound_player.tscn"
+MusicPlayer="*res://globals/MusicPlayer/music_player.tscn"
 
 [display]
 

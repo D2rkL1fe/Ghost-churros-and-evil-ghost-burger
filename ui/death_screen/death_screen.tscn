@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://yh4pl3xixecn"]
+
+[ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_t6qdb"]
+[ext_resource type="PackedScene" uid="uid://vw45rcktv2je" path="res://components/ButtonComponent/button_component.tscn" id="2_4iqn7"]
+[ext_resource type="Script" uid="uid://ol3bnpu5olhx" path="res://ui/death_screen/death_screen.gd" id="2_lmqk2"]
+
+[node name="DeathScreen" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t6qdb")
+script = ExtResource("2_lmqk2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -80.0
+offset_right = 89.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "You died..."
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mazna was too much for you to handle, noob"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxButton" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
+layout_mode = 2
+text = "Restart"
+
+[node name="ButtonComponent" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" instance=ExtResource("2_4iqn7")]
+
+[node name="Menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
+layout_mode = 2
+text = "Menu"
+
+[node name="ButtonComponent" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" instance=ExtResource("2_4iqn7")]
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" to="." method="_on_menu_pressed"]

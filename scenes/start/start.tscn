@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqwggfiop21ya"]
+[gd_scene load_steps=6 format=3 uid="uid://cqwggfiop21ya"]
 
 [ext_resource type="Texture2D" uid="uid://5ebb8y85cnlk" path="res://output-onlinepngtools.png" id="1_662lp"]
+[ext_resource type="Script" uid="uid://b6h8lwelw0hyy" path="res://scenes/start/start.gd" id="1_oeh0t"]
 
 [sub_resource type="Animation" id="Animation_oeh0t"]
 resource_name = "Intro"
@@ -16,6 +17,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(964, 547)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"transition"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ae20m"]
@@ -46,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oeh0t")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1

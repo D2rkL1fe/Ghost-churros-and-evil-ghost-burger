@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	print("Player took damage:", amount, " | HP:", health)
+	
+	SoundPlayer.play_sound(SoundPlayer.HURT)
 
 	if sprite:
 		var flash_tween = get_tree().create_tween()
@@ -43,5 +45,7 @@ func apply_knockback(force: Vector2) -> void:
 	velocity += force
 
 func die() -> void:
-	print("Player died!")
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/start/start.tscn")
+	SoundPlayer.play_sound(SoundPlayer.DEATH)
+	MusicPlayer.play_music(MusicPlayer.DEATH)
+	
+	GlobalStats.end()

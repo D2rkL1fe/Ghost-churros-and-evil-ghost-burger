@@ -25,8 +25,11 @@ func _on_check_music_toggled(toggled_on: bool) -> void:
 
 
 func _on_restart_pressed() -> void:
-	print(123)
+	toggle()
+	
 	get_tree().reload_current_scene()
 
 func _on_menu_pressed() -> void:
+	toggle()
+	
 	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
