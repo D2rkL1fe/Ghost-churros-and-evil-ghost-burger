@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr2yyjrovv7b2"]
+
+[ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="1_tetx3"]
+[ext_resource type="PackedScene" uid="uid://btoh8h42i88yn" path="res://entities/burger_boss/burger_boss.tscn" id="2_21wde"]
+
+[node name="BossFight" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_tetx3")]
+position = Vector2(-1, 6)
+
+[node name="BurgerBoss" parent="." instance=ExtResource("2_21wde")]
+position = Vector2(118, -12)

@@ -46,6 +46,6 @@ func apply_knockback(force: Vector2) -> void:
 
 func die() -> void:
 	SoundPlayer.play_sound(SoundPlayer.DEATH)
-	MusicPlayer.play_music(MusicPlayer.DEATH)
+	#MusicPlayer.play_music(MusicPlayer.DEATH)
 	
 	Global.end()
