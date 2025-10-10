@@ -106,6 +106,7 @@ gradient = SubResource("Gradient_ypg6x")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ve1f"]
 emission_shape = 1
 emission_sphere_radius = 1.0
+inherit_velocity_ratio = 1.0
 spread = 180.0
 initial_velocity_min = 51.91
 initial_velocity_max = 80.89
@@ -116,7 +117,6 @@ color_ramp = SubResource("GradientTexture1D_y300u")
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5ve1f")
-move_speed = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y300u")
