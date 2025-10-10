@@ -3,7 +3,7 @@ extends Control
 
 
 func _ready() -> void:
-	GlobalStats.player_death.connect(_on_player_death)
+	Global.player_death.connect(_on_player_death)
 
 func _on_player_death():
 	visible = true
@@ -11,10 +11,14 @@ func _on_player_death():
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
+	visible = false
 	
-	get_tree().reload_current_scene()
+	MusicPlayer.stop_music()
+	Global.transition("reload")
 
 func _on_menu_pressed() -> void:
 	get_tree().paused = false
+	visible = false
 	
-	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
+	MusicPlayer.stop_music()
+	Global.transition("res://scenes/menu/menu.tscn")

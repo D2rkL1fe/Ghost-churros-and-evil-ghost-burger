@@ -70,12 +70,14 @@ alignment = 1
 [node name="SliderSFX" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider"]
 layout_mode = 2
 size_flags_vertical = 3
-value = 100.0
+min_value = -60.0
+max_value = 20.0
 
 [node name="SliderMusic" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider"]
 layout_mode = 2
 size_flags_vertical = 3
-value = 100.0
+min_value = -60.0
+max_value = 20.0
 
 [node name="VBoxCheck" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

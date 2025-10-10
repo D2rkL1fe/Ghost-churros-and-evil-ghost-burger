@@ -48,4 +48,4 @@ func die() -> void:
 	SoundPlayer.play_sound(SoundPlayer.DEATH)
 	MusicPlayer.play_music(MusicPlayer.DEATH)
 	
-	GlobalStats.end()
+	Global.end()

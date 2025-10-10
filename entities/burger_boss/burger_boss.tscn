@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://btoh8h42i88yn"]
+
+[ext_resource type="Script" uid="uid://bb6dcbjhgfiii" path="res://entities/burger_boss/burger_boss.gd" id="1_8y5w1"]
+[ext_resource type="Texture2D" uid="uid://cdj65x6wvtcdj" path="res://entities/burger_boss/idle/burger_boss_idle.png" id="2_u688g"]
+[ext_resource type="Texture2D" uid="uid://yillav8pnv21" path="res://entities/burger_boss/run/burger_boss_run.png" id="3_mns20"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mns20"]
+atlas = ExtResource("2_u688g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijqrb"]
+atlas = ExtResource("2_u688g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op18b"]
+atlas = ExtResource("2_u688g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cqeq"]
+atlas = ExtResource("2_u688g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx4xf"]
+atlas = ExtResource("2_u688g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arjy4"]
+atlas = ExtResource("2_u688g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_assbw"]
+atlas = ExtResource("3_mns20")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3kdc"]
+atlas = ExtResource("3_mns20")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ned2m"]
+atlas = ExtResource("3_mns20")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clutb"]
+atlas = ExtResource("3_mns20")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_assbw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mns20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijqrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op18b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cqeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx4xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arjy4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_assbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3kdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ned2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clutb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="BurgerBoss" type="CharacterBody2D"]
+script = ExtResource("1_8y5w1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_assbw")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.53983605

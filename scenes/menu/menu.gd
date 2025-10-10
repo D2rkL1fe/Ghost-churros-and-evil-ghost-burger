@@ -1,5 +1,10 @@
 extends Control
 
+@export var animator : AnimationPlayer
+
 func _process(_delta: float) -> void:
 	if Input.is_anything_pressed():
-		get_tree().change_scene_to_file("res://scenes/start/start.tscn")
+		animator.play("transition")
+
+func transition():
+	Global.transition("res://scenes/start/start.tscn")

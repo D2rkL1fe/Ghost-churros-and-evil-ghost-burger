@@ -7,6 +7,7 @@ const HOVER = preload("uid://drynyh42dmb45")
 const HURT = preload("uid://dyjikxfimftn3")
 const PICKUP = preload("uid://c7b1v4xqxdh6m")
 const SELECT = preload("uid://c1u2hqrhsrg3v")
+const TRANSITION = preload("uid://g86slrcoec47")
 
 # store all audio/sound players
 var audio_players
@@ -24,3 +25,5 @@ func play_sound(sound):
 				audio_player.pitch_scale = randf_range(0.95, 1.05)
 				
 				audio_player.play()
+				
+				break

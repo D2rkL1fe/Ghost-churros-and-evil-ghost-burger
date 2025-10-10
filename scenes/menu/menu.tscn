@@ -1,10 +1,80 @@
-[gd_scene load_steps=4 format=3 uid="uid://xk6dawr05fvj"]
+[gd_scene load_steps=12 format=3 uid="uid://xk6dawr05fvj"]
 
 [ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="1_klgdb"]
 [ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_mcvr8"]
 [ext_resource type="Script" uid="uid://dxcorw122thxi" path="res://scenes/menu/menu.gd" id="2_e0arn"]
+[ext_resource type="Shader" uid="uid://dgrrvbgh12yxy" path="res://scenes/menu/background_tile.gdshader" id="3_037ec"]
+[ext_resource type="Shader" uid="uid://bphvkhbrisuvs" path="res://scenes/menu/wavy_text.gdshader" id="5_y1o0p"]
 
-[node name="Menu" type="Control"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1o0p"]
+shader = ExtResource("3_037ec")
+shader_parameter/scale = 0.5
+shader_parameter/tint = Color(1, 0.94633335, 0.53999996, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8yej"]
+shader = ExtResource("5_y1o0p")
+shader_parameter/height = 2.0
+shader_parameter/frequency = 8.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y2rt"]
+shader = ExtResource("5_y1o0p")
+shader_parameter/height = 0.5
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="Animation" id="Animation_y1o0p"]
+resource_name = "transition"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.125, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0.9, 0.9), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"transition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r8yej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8yej"]
+_data = {
+&"RESET": SubResource("Animation_r8yej"),
+&"transition": SubResource("Animation_y1o0p")
+}
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,9 +83,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mcvr8")
 script = ExtResource("2_e0arn")
+animator = NodePath("AnimationPlayer")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0.8900428, 0.5290847, 1)
+material = SubResource("ShaderMaterial_y1o0p")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,29 +99,34 @@ stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.5
-offset_top = -25.0
-offset_right = 104.5
-offset_bottom = 25.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(240, 135)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 alignment = 1
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_r8yej")
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Mazna"
 horizontal_alignment = 1
 
-[node name="Action" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_3y2rt")
 layout_mode = 2
-text = "Press any BUTTON to start!"
+bbcode_enabled = true
+text = "Press any [color=e8c170]BUTTON[/color] to start!"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r8yej")
+}

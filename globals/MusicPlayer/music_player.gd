@@ -1,7 +1,8 @@
 extends Node
 
 # all music
-const DEATH = preload("uid://b3ysjvdtlo7p2")
+const MEOW = preload("uid://b3ysjvdtlo7p2")
+const DEATH = preload("uid://dtrwrjbh6k1hp")
 
 # main music player
 @export var music_player : AudioStreamPlayer
