@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://btoh8h42i88yn"]
+[gd_scene load_steps=17 format=3 uid="uid://btoh8h42i88yn"]
 
 [ext_resource type="Script" uid="uid://bb6dcbjhgfiii" path="res://entities/burger_boss/burger_boss.gd" id="1_8y5w1"]
 [ext_resource type="Texture2D" uid="uid://cdj65x6wvtcdj" path="res://entities/burger_boss/idle/burger_boss_idle.png" id="2_u688g"]
@@ -88,6 +88,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijqrb"]
+size = Vector2(30.5, 31.5)
+
 [node name="BurgerBoss" type="CharacterBody2D"]
 script = ExtResource("1_8y5w1")
 
@@ -102,3 +105,7 @@ frame_progress = 0.53983605
 [node name="ShadowComponent" parent="." instance=ExtResource("4_ijqrb")]
 position = Vector2(0, -4)
 scale = Vector2(1.3536199, 1.0951625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -16.25)
+shape = SubResource("RectangleShape2D_ijqrb")
