@@ -1,51 +1,65 @@
-class_name Player
 extends CharacterBody2D
+class_name Player
 
-@export var sprite: AnimatedSprite2D
 @export var speed: float = 150.0
+@export var bullet_scene: PackedScene
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: TextureProgressBar = $HealthBar
+@onready var ammo_bar: TextureProgressBar = $AmmoBar
+@onready var churros_count_label: Label = $ChurrosCount
 @onready var cam: Camera2D = $Camera2D
 
 var health: int = 100
-var velocity_y_offset := 0.0
-var float_timer := 0.0
+var max_health: int = 100
+var ammo: int = 0
 
-func _physics_process(delta: float) -> void:
+func _ready():
+	health = max_health
+	health_bar.max_value = max_health
+	health_bar.value = health
+	ammo_bar.max_value = 100
+	ammo_bar.value = ammo
+	churros_count_label.text = str(ammo)
+
+func _physics_process(_delta):
+	# Movement
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-
-	# Move and flip
-	if input_dir.x:
-		sprite.flip_h = input_dir.x < 0
-
 	velocity = input_dir * speed
 	move_and_slide()
 
-	# Gentle float animation (makes the ghost look alive)
-	float_timer += delta * 3.0
-	velocity_y_offset = sin(float_timer) * 2.0
-	sprite.position.y = velocity_y_offset
+	# Sprite flip
+	if input_dir.x != 0:
+		sprite.flip_h = input_dir.x < 0
+		if sprite.animation != "run":
+			sprite.play("run")
+	elif sprite.animation != "idle":
+		sprite.play("idle")
 
-func take_damage(amount: int) -> void:
+	# Shooting
+	if Input.is_action_just_pressed("shoot") and ammo > 0:
+		shoot_bullet()
+
+func shoot_bullet():
+	var bullet = bullet_scene.instantiate()
+	get_parent().add_child(bullet)
+	bullet.global_position = global_position
+	bullet.direction = (get_global_mouse_position() - global_position).normalized()
+	ammo -= 1
+	ammo_bar.value = ammo
+	churros_count_label.text = str(ammo)
+
+func take_damage(amount: int):
 	health -= amount
-	print("Player took damage:", amount, " | HP:", health)
-	
+	health_bar.value = health
 	SoundPlayer.play_sound(SoundPlayer.HURT)
-
-	if sprite:
-		var flash_tween = get_tree().create_tween()
-		flash_tween.tween_property(sprite, "modulate", Color(1, 0.3, 0.3), 0.1)
-		flash_tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.2)
-
 	if cam and cam.has_method("shake"):
 		cam.shake(6.0, 0.25)
-
 	if health <= 0:
 		die()
 
-func apply_knockback(force: Vector2) -> void:
+func apply_knockback(force: Vector2):
 	velocity += force
 
-func die() -> void:
+func die():
 	SoundPlayer.play_sound(SoundPlayer.DEATH)
-	#MusicPlayer.play_music(MusicPlayer.DEATH)
-	
 	Global.end()
