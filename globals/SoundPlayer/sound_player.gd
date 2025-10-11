@@ -8,6 +8,8 @@ const HURT = preload("uid://dyjikxfimftn3")
 const PICKUP = preload("uid://c7b1v4xqxdh6m")
 const SELECT = preload("uid://c1u2hqrhsrg3v")
 const TRANSITION = preload("uid://g86slrcoec47")
+const SHOOT = preload("uid://dmcaxlh133wnr")
+const TELEPORT = preload("uid://dvgpriif0rjtc")
 
 # store all audio/sound players
 var audio_players

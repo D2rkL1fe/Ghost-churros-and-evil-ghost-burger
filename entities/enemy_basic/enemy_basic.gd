@@ -22,13 +22,13 @@ extends CharacterBody2D
 @export var shockwave_max_scale: float = 3.0
 
 # How far the enemy can detect the player
-@export var detection_radius: float = 150.0
+@export var detection_radius: float = 25.0
 
 # Distance at which enemy can attack
 @export var attack_range: float = 48.0
 
 # Radius around a churros that the defender will protect
-@export var defense_radius: float = 300.0
+@export var defense_radius: float = 150.0
 
 # Orbiting parameters for defenders around churros
 @export var orbit_distance: float = 64.0
@@ -174,7 +174,8 @@ func _defender_behavior(delta: float) -> void:
 
 		# Move toward player if far away
 		if to_player.length() > 6:
-			velocity = to_player.normalized() * move_speed
+			velocity += to_player.normalized() * move_speed * 0.75
+			velocity = velocity.clamp(Vector2(-60, -60), Vector2(60, 60))
 			_play_run(to_player.x)
 		else:
 			velocity = Vector2.ZERO

@@ -10,6 +10,5 @@ func _on_area_2d_body_entered(body):
 		queue_free()
 		SoundPlayer.play_sound(SoundPlayer.PICKUP)
 		body.ammo += 5
-		body.ammo_bar.value = body.ammo
 		
 		GlobalStats.add_churros_bullets(5)

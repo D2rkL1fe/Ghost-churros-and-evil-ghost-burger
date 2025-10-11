@@ -7,6 +7,7 @@ var direction: Vector2 = Vector2.ZERO
 
 func _physics_process(_delta):
 	position += direction * speed * _delta
+	look_at(position + direction)
 	# Remove bullet if offscreen
 	if position.x < -5000 or position.y < -5000 or position.x > 5000 or position.y > 5000:
 		queue_free()

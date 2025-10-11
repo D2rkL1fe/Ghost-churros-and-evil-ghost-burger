@@ -1,0 +1,130 @@
+[gd_scene load_steps=18 format=3 uid="uid://bb4aayicyw0yx"]
+
+[ext_resource type="Texture2D" uid="uid://fm8fjio2chdp" path="res://entities/teleport/idle/teleport_idle.png" id="1_3x260"]
+[ext_resource type="Script" uid="uid://buewu6evdqm18" path="res://entities/teleport/teleport.gd" id="1_62ulm"]
+[ext_resource type="Texture2D" uid="uid://db2vkg5f50eki" path="res://entities/teleport/idle/teleport_outline_idle.png" id="3_oyn6f"]
+[ext_resource type="Texture2D" uid="uid://xapq02i2n8ut" path="res://assets/sprites/particles/pixel_star.png" id="4_mw12u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ulm"]
+atlas = ExtResource("1_3x260")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyn6f"]
+atlas = ExtResource("1_3x260")
+region = Rect2(48, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw12u"]
+atlas = ExtResource("1_3x260")
+region = Rect2(96, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6tg8"]
+atlas = ExtResource("3_oyn6f")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opt1k"]
+atlas = ExtResource("3_oyn6f")
+region = Rect2(48, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vwcx"]
+atlas = ExtResource("3_oyn6f")
+region = Rect2(96, 0, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6tg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62ulm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyn6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw12u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6tg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opt1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vwcx")
+}],
+"loop": true,
+"name": &"idle_outline",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62ulm"]
+radius = 5.0
+height = 38.0
+
+[sub_resource type="Gradient" id="Gradient_7j867"]
+offsets = PackedFloat32Array(0, 0.70666665)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oyn6f"]
+gradient = SubResource("Gradient_7j867")
+width = 48
+height = 32
+fill = 1
+fill_from = Vector2(0.5140187, 0.62383175)
+fill_to = Vector2(0.5, 0.035046726)
+
+[sub_resource type="Curve" id="Curve_f6tg8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20454544, 0.9887641), 0.0, 0.0, 0, 0, Vector2(0.79545456, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_opt1k"]
+curve = SubResource("Curve_f6tg8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0vwcx"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(21.81, 6.73, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 2.5
+initial_velocity_max = 7.5
+angular_velocity_min = -45.000015
+angular_velocity_max = 44.999985
+gravity = Vector3(0, 1, 0)
+scale_min = 0.5
+color = Color(0.21960784, 0.7058824, 0.8784314, 1)
+alpha_curve = SubResource("CurveTexture_opt1k")
+
+[node name="Teleport" type="Area2D"]
+script = ExtResource("1_62ulm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f6tg8")
+animation = &"idle_outline"
+autoplay = "idle_outline"
+frame_progress = 0.3883752
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_62ulm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+energy = 0.6
+texture = SubResource("GradientTexture2D_oyn6f")
+
+[node name="PointLight" type="PointLight2D" parent="."]
+position = Vector2(0, -9)
+energy = 0.4
+texture = SubResource("GradientTexture2D_oyn6f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 12
+texture = ExtResource("4_mw12u")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_0vwcx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

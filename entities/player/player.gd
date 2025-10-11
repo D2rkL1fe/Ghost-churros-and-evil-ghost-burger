@@ -5,7 +5,6 @@ class_name Player
 @export var bullet_scene: PackedScene
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $HealthBar
-@onready var ammo_bar: TextureProgressBar = $AmmoBar
 @onready var cam: Camera2D = $Camera2D
 
 var health: int = 100
@@ -16,8 +15,6 @@ func _ready():
 	health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = health
-	ammo_bar.max_value = 100
-	ammo_bar.value = ammo
 
 func _physics_process(_delta):
 	# Movement
@@ -43,9 +40,10 @@ func shoot_bullet():
 	bullet.global_position = global_position
 	bullet.direction = (get_global_mouse_position() - global_position).normalized()
 	ammo -= 1
-	ammo_bar.value = ammo
 	
 	GlobalStats.add_churros_bullets(-1)
+	
+	SoundPlayer.play_sound(SoundPlayer.SHOOT)
 	
 	#churros_count_label.text = str(ammo)
 

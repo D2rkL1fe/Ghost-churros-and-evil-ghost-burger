@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dahkdou1cgc4w"]
+[gd_scene load_steps=10 format=3 uid="uid://dahkdou1cgc4w"]
 
 [ext_resource type="Script" uid="uid://iavdtf1h3tqp" path="res://entities/churros/churros.gd" id="1_i1ufe"]
 [ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="2_7j867"]
+[ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="3_7j867"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0uvp"]
 radius = 8.0
@@ -24,6 +25,17 @@ scale_min = 2.0
 scale_max = 2.0
 color = Color(0.9999996, 0.849784, 0.52538663, 0.8)
 color_ramp = SubResource("GradientTexture1D_i1ufe")
+
+[sub_resource type="Gradient" id="Gradient_7j867"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5i625"]
+gradient = SubResource("Gradient_7j867")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90654206, 0.18691589)
 
 [node name="Churros" type="Area2D"]
 script = ExtResource("1_i1ufe")
@@ -48,3 +60,12 @@ explosiveness = 0.05
 fixed_fps = 0
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_7j867")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
+energy = 0.4
+texture = SubResource("GradientTexture2D_5i625")
+
+[node name="ShadowComponent" parent="." instance=ExtResource("3_7j867")]
+position = Vector2(0, -1)
+scale = Vector2(0.5847378, 0.41596472)

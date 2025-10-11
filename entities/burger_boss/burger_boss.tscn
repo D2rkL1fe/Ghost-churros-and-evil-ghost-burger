@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://btoh8h42i88yn"]
+[gd_scene load_steps=16 format=3 uid="uid://btoh8h42i88yn"]
 
 [ext_resource type="Script" uid="uid://bb6dcbjhgfiii" path="res://entities/burger_boss/burger_boss.gd" id="1_8y5w1"]
 [ext_resource type="Texture2D" uid="uid://cdj65x6wvtcdj" path="res://entities/burger_boss/idle/burger_boss_idle.png" id="2_u688g"]
 [ext_resource type="Texture2D" uid="uid://yillav8pnv21" path="res://entities/burger_boss/run/burger_boss_run.png" id="3_mns20"]
+[ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="4_ijqrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mns20"]
 atlas = ExtResource("2_u688g")
@@ -91,8 +92,13 @@ animations = [{
 script = ExtResource("1_8y5w1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_assbw")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.53983605
+
+[node name="ShadowComponent" parent="." instance=ExtResource("4_ijqrb")]
+position = Vector2(0, -4)
+scale = Vector2(1.3536199, 1.0951625)
