@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh6esxi6t745e"
-path="res://.godot/imported/Untitled - Copy.png-2fbf77c6157536ee112873b607554b35.ctex"
+uid="uid://cnv14jdhoguwt"
+path="res://.godot/imported/churros_bullet.png-67853e364a61ac2611eb0660688f982a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemy_basic/Untitled - Copy.png"
-dest_files=["res://.godot/imported/Untitled - Copy.png-2fbf77c6157536ee112873b607554b35.ctex"]
+source_file="res://entities/bullet/churros_bullet.png"
+dest_files=["res://.godot/imported/churros_bullet.png-67853e364a61ac2611eb0660688f982a.ctex"]
 
 [params]
 

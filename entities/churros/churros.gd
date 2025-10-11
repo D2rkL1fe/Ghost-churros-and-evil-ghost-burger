@@ -10,4 +10,5 @@ func _on_area_2d_body_entered(body):
 		SoundPlayer.play_sound(SoundPlayer.PICKUP)
 		body.ammo += 5
 		body.ammo_bar.value = body.ammo
-		body.churros_count_label.text = str(body.ammo)
+		
+		GlobalStats.add_churros_bullets(5)

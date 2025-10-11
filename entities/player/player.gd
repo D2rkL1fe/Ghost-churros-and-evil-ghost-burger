@@ -6,7 +6,6 @@ class_name Player
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var ammo_bar: TextureProgressBar = $AmmoBar
-@onready var churros_count_label: Label = $ChurrosCount
 @onready var cam: Camera2D = $Camera2D
 
 var health: int = 100
@@ -19,7 +18,6 @@ func _ready():
 	health_bar.value = health
 	ammo_bar.max_value = 100
 	ammo_bar.value = ammo
-	churros_count_label.text = str(ammo)
 
 func _physics_process(_delta):
 	# Movement
@@ -46,7 +44,10 @@ func shoot_bullet():
 	bullet.direction = (get_global_mouse_position() - global_position).normalized()
 	ammo -= 1
 	ammo_bar.value = ammo
-	churros_count_label.text = str(ammo)
+	
+	GlobalStats.add_churros_bullets(-1)
+	
+	#churros_count_label.text = str(ammo)
 
 func take_damage(amount: int):
 	health -= amount

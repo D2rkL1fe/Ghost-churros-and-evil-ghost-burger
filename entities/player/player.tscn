@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://c51eabamqukgs"]
+[gd_scene load_steps=21 format=3 uid="uid://c51eabamqukgs"]
 
 [ext_resource type="Script" uid="uid://bcccbojk1k82v" path="res://entities/player/player.gd" id="1_sglur"]
 [ext_resource type="Texture2D" uid="uid://bab030tmw7w4j" path="res://entities/player/idle/player_idle.png" id="1_symyc"]
+[ext_resource type="PackedScene" uid="uid://22pisrs50qje" path="res://entities/bullet/bullet.tscn" id="2_qiwj3"]
 [ext_resource type="Texture2D" uid="uid://brtmfcrro62u6" path="res://entities/player/run/player_run.png" id="3_bls4j"]
 [ext_resource type="Script" uid="uid://bvkdg36me7or7" path="res://entities/player/camera_2d.gd" id="4_bls4j"]
-[ext_resource type="Texture2D" uid="uid://vvcq2svx4w6u" path="res://entities/enemy_basic/Untitled.png" id="5_8fjmc"]
-[ext_resource type="Texture2D" uid="uid://dh6esxi6t745e" path="res://entities/enemy_basic/Untitled - Copy.png" id="5_fkugw"]
+[ext_resource type="Texture2D" uid="uid://vvcq2svx4w6u" path="res://entities/enemy_basic/no_health.png" id="5_8fjmc"]
+[ext_resource type="Texture2D" uid="uid://dh6esxi6t745e" path="res://entities/enemy_basic/health.png" id="5_fkugw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
 atlas = ExtResource("1_symyc")
@@ -102,6 +103,7 @@ radius = 7.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_sglur")
+bullet_scene = ExtResource("2_qiwj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
@@ -138,9 +140,3 @@ offset_right = 6.0
 offset_bottom = 18.0
 texture_under = ExtResource("5_8fjmc")
 texture_progress = ExtResource("5_fkugw")
-
-[node name="ChurrosCount" type="Label" parent="."]
-offset_left = 4.0
-offset_top = -16.0
-offset_right = 44.0
-offset_bottom = 7.0

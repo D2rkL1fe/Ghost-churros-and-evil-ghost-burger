@@ -13,6 +13,10 @@ class_name Enemy
 @export var orbit_spread: float = 0.9
 @export var knockback_force: float = 250.0
 
+@export var health: int = 100
+
+@export var health_bar : TextureProgressBar
+
 var rng := RandomNumberGenerator.new()
 var orbit_phase: float = 0.0
 var orbit_speed_offset: float = 1.0
@@ -113,8 +117,15 @@ func attack():
 	shockwave.monitoring = false
 	shockwave.monitorable = false
 
+func take_damage(damage):
+	health -= damage
+	health_bar.value = health
+	
+	if health <= 0:
+		queue_free()
+
 func _on_Shockwave_body_entered(body):
-	if body.has_method("take_damage"):
+	if body is Player:
 		body.take_damage(shockwave_damage)
 	if body.has_method("apply_knockback"):
 		body.apply_knockback((body.global_position - global_position).normalized() * knockback_force)

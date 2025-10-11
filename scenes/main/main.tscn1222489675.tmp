@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://crnxgfctb87i8"]
+[gd_scene load_steps=20 format=4 uid="uid://crnxgfctb87i8"]
 
 [ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="1_6q06x"]
 [ext_resource type="Shader" uid="uid://b8863mjerw8wy" path="res://scenes/main/tilemap.gdshader" id="2_blune"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://uq7pcty8pgyk" path="res://entities/enemy_basic/enemy_basic.tscn" id="7_hujxm"]
 [ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="7_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://yh4pl3xixecn" path="res://ui/death_screen/death_screen.tscn" id="9_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://btoh8h42i88yn" path="res://entities/burger_boss/burger_boss.tscn" id="10_a8run"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raeie"]
 shader = ExtResource("2_blune")
@@ -213,6 +214,9 @@ position = Vector2(-220, 54)
 
 [node name="EnemyBasic4" parent="Enemies" instance=ExtResource("7_hujxm")]
 position = Vector2(111, 120)
+
+[node name="BurgerBoss" parent="Enemies" instance=ExtResource("10_a8run")]
+position = Vector2(-77, 11)
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("label")]
 script = ExtResource("5_b1x3f")

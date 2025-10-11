@@ -8,7 +8,7 @@ signal player_death
 signal transitioned
 
 func restart():
-	pass
+	GlobalStats.churros_counter = 0
 
 # end the game
 func end():
@@ -24,3 +24,5 @@ func transition(scene):
 		
 		transitioning = false
 		get_tree().paused = false
+		
+		restart()
