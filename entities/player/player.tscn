@@ -103,7 +103,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qiwj3"]
 radius = 7.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_sglur")
 bullet_scene = ExtResource("2_qiwj3")
 
