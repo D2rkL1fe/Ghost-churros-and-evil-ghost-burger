@@ -9,6 +9,8 @@ height = 8.0
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_2kyv7")
+speed = null
+damage = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -4)

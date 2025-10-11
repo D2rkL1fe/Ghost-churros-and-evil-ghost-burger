@@ -3,6 +3,7 @@ class_name Churros
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_area_2d_body_entered"))
+	
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
