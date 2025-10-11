@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dg802yk8wmcnx"]
 
-[ext_resource type="Texture2D" uid="uid://b5nq3iacguo78" path="res://scenes/main/stone.png" id="1_5ldj3"]
+[ext_resource type="Texture2D" uid="uid://b5nq3iacguo78" path="res://entities/stone/stone.png" id="1_5ldj3"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="2_w10ko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w10ko"]

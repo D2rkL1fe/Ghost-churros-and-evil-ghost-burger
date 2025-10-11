@@ -109,17 +109,17 @@ bullet_scene = ExtResource("2_qiwj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -8)
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_8fjmc")
 animation = &"run"
 autoplay = "idle"
 frame_progress = 0.57152146
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_qiwj3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 7)
 limit_left = -360
 limit_top = -203
 limit_right = 360
@@ -131,14 +131,14 @@ script = ExtResource("4_bls4j")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = -20.0
-offset_top = -24.0
-offset_right = -19.0
-offset_bottom = -23.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = -11.0
 value = 100.0
 texture_under = ExtResource("6_26q78")
 texture_over = ExtResource("7_bectd")
 texture_progress = ExtResource("8_wvtmh")
 
 [node name="ShadowComponent" parent="." instance=ExtResource("9_bectd")]
-position = Vector2(0, -1)
+position = Vector2(0, 5.9999995)
 scale = Vector2(0.5847378, 0.41596472)

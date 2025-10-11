@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://btoh8h42i88yn"]
+[gd_scene load_steps=21 format=3 uid="uid://btoh8h42i88yn"]
 
 [ext_resource type="Script" uid="uid://bb6dcbjhgfiii" path="res://entities/burger_boss/burger_boss.gd" id="1_8y5w1"]
+[ext_resource type="PackedScene" uid="uid://c061b32qrmtr" path="res://entities/burger_boss/bounce_bullet/bounce_bullet.tscn" id="2_op18b"]
 [ext_resource type="Texture2D" uid="uid://cdj65x6wvtcdj" path="res://entities/burger_boss/idle/burger_boss_idle.png" id="2_u688g"]
 [ext_resource type="Texture2D" uid="uid://yillav8pnv21" path="res://entities/burger_boss/run/burger_boss_run.png" id="3_mns20"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="4_ijqrb"]
+[ext_resource type="Texture2D" uid="uid://bugjtc6of30sj" path="res://assets/sprites/health_bar/under.png" id="6_arjy4"]
+[ext_resource type="Texture2D" uid="uid://3u45di088whm" path="res://assets/sprites/health_bar/border.png" id="7_assbw"]
+[ext_resource type="Texture2D" uid="uid://dlng5jifkt2rs" path="res://assets/sprites/health_bar/progress.png" id="8_s3kdc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mns20"]
 atlas = ExtResource("2_u688g")
@@ -93,19 +97,30 @@ size = Vector2(30.5, 31.5)
 
 [node name="BurgerBoss" type="CharacterBody2D"]
 script = ExtResource("1_8y5w1")
+bullet_scene = ExtResource("2_op18b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_assbw")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.53983605
 
 [node name="ShadowComponent" parent="." instance=ExtResource("4_ijqrb")]
-position = Vector2(0, -4)
+position = Vector2(0, 12)
 scale = Vector2(1.3536199, 1.0951625)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.25, -16.25)
+position = Vector2(-0.25, -0.25)
 shape = SubResource("RectangleShape2D_ijqrb")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 10.0
+offset_bottom = -24.0
+scale = Vector2(1.5, 1.5)
+value = 100.0
+texture_under = ExtResource("6_arjy4")
+texture_over = ExtResource("7_assbw")
+texture_progress = ExtResource("8_s3kdc")

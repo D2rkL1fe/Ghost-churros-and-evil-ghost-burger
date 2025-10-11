@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c061b32qrmtr"]
 
-[ext_resource type="Script" uid="uid://bwktpasvq3gpk" path="res://entities/burger_boss/bounce_burger_ball/Bounse_bullet.gd" id="1_32xli"]
-[ext_resource type="Texture2D" uid="uid://clxkbkh63lqa" path="res://entities/burger_boss/bounce_burger_ball/bounce_burger_ball.png" id="2_xeita"]
+[ext_resource type="Script" uid="uid://bwktpasvq3gpk" path="res://entities/burger_boss/bounce_bullet/Bounse_bullet.gd" id="1_32xli"]
+[ext_resource type="Texture2D" uid="uid://clxkbkh63lqa" path="res://entities/burger_boss/bounce_bullet/bounce_bullet.png" id="2_xeita"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iujwt"]
 radius = 8.0

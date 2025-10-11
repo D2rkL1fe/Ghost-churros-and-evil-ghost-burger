@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://crrm4mkdt8y8s"]
+
+[ext_resource type="Texture2D" uid="uid://bcjaau5chapc8" path="res://entities/tree/tree.png" id="1_20x5l"]
+[ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="2_38xc8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w10ko"]
+size = Vector2(16, 12)
+
+[node name="Tree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -9)
+texture = ExtResource("1_20x5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_w10ko")
+
+[node name="ShadowComponent" parent="." instance=ExtResource("2_38xc8")]
+position = Vector2(0, 6.0000005)
+scale = Vector2(0.61952424, 0.5158225)
