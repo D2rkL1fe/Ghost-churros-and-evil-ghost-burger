@@ -120,6 +120,7 @@ scale_max = 0.79999995
 color_ramp = SubResource("GradientTexture1D_y300u")
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Enemy"]]
+collision_layer = 4
 script = ExtResource("1_5ve1f")
 health_bar = NodePath("HealthBar")
 

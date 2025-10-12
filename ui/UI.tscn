@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq557m1o1by3b"]
+
+[ext_resource type="Script" uid="uid://bqsmfc7egdln" path="res://ui/UI.gd" id="1_vkava"]
+[ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="2_tf0e0"]
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="3_obcwv"]
+[ext_resource type="PackedScene" uid="uid://yh4pl3xixecn" path="res://ui/death_screen/death_screen.tscn" id="4_bo1jx"]
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("label")]
+script = ExtResource("1_vkava")
+label = NodePath("Control/MarginContainer/HBoxContainer/Label")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_tf0e0")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_bottom = 25.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_obcwv")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Churros: 0"
+
+[node name="DeathScreen" parent="." instance=ExtResource("4_bo1jx")]
