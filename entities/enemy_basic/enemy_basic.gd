@@ -270,8 +270,7 @@ func attack() -> void:
 		aura_particles.restart()
 
 	# Play sound and camera shake if available
-	if Engine.has_singleton("SoundPlayer"):
-		SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
+	SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
 	if cam and cam.has_method("shake"):
 		cam.shake(3.0, 0.08)
 

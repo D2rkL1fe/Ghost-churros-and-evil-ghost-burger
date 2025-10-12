@@ -1,13 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://c51eabamqukgs"]
+[gd_scene load_steps=21 format=3 uid="uid://c51eabamqukgs"]
 
 [ext_resource type="Script" uid="uid://bcccbojk1k82v" path="res://entities/player/player.gd" id="1_sglur"]
 [ext_resource type="Texture2D" uid="uid://bab030tmw7w4j" path="res://entities/player/idle/player_idle.png" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://22pisrs50qje" path="res://entities/bullet/bullet.tscn" id="2_qiwj3"]
 [ext_resource type="Texture2D" uid="uid://brtmfcrro62u6" path="res://entities/player/run/player_run.png" id="3_bls4j"]
 [ext_resource type="Script" uid="uid://bvkdg36me7or7" path="res://entities/player/camera_2d.gd" id="4_bls4j"]
-[ext_resource type="Texture2D" uid="uid://bugjtc6of30sj" path="res://assets/sprites/health_bar/under.png" id="6_26q78"]
-[ext_resource type="Texture2D" uid="uid://3u45di088whm" path="res://assets/sprites/health_bar/border.png" id="7_bectd"]
-[ext_resource type="Texture2D" uid="uid://dlng5jifkt2rs" path="res://assets/sprites/health_bar/progress.png" id="8_wvtmh"]
+[ext_resource type="PackedScene" uid="uid://b6fxkbsyvt37f" path="res://components/HealthBarComponent/health_bar_component.tscn" id="6_qiwj3"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="9_bectd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
@@ -104,7 +102,7 @@ animations = [{
 radius = 7.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 10
+collision_mask = 11
 script = ExtResource("1_sglur")
 bullet_scene = ExtResource("2_qiwj3")
 
@@ -121,6 +119,7 @@ shape = SubResource("CircleShape2D_qiwj3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 7)
+limit_enabled = false
 limit_left = -360
 limit_top = -203
 limit_right = 360
@@ -130,15 +129,9 @@ position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 script = ExtResource("4_bls4j")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -20.0
+[node name="HealthBarComponent" parent="." instance=ExtResource("6_qiwj3")]
 offset_top = -17.0
-offset_right = 20.0
 offset_bottom = -11.0
-value = 100.0
-texture_under = ExtResource("6_26q78")
-texture_over = ExtResource("7_bectd")
-texture_progress = ExtResource("8_wvtmh")
 
 [node name="ShadowComponent" parent="." instance=ExtResource("9_bectd")]
 position = Vector2(0, 5.9999995)

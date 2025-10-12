@@ -4,7 +4,7 @@ class_name Player
 @export var speed: float = 150.0
 @export var bullet_scene: PackedScene
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health_bar: TextureProgressBar = $HealthBar
+@onready var health_bar: TextureProgressBar = $HealthBarComponent
 @onready var cam: Camera2D = $Camera2D
 
 var health: int = 100
