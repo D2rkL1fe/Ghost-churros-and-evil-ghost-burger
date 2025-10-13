@@ -1,6 +1,6 @@
 extends CharacterBody2D
-@export_enum("defender", "attacker") var role: String = "defender"
 
+@export_enum("defender", "attacker") var role: String = "defender"
 @export var move_speed: float = 60.0
 @export var shockwave_damage: int = 20
 @export var attack_cooldown: float = 1.3
@@ -13,12 +13,11 @@ extends CharacterBody2D
 @export var orbit_distance: float = 64.0
 @export var orbit_speed: float = 1.6
 @export var orbit_spread: float = 0.9
-
 @export var health: int = 100
 @export var health_bar: TextureProgressBar
+@export var dialog_scene: PackedScene
 
 var rng := RandomNumberGenerator.new()
-
 var orbit_phase: float = 0.0
 var orbit_speed_offset: float = 1.0
 var orbit_phase_offset: float = 0.0
@@ -34,17 +33,18 @@ var player: Node2D = null
 var churros_list: Array = []
 var defending_target: Node2D = null
 var can_attack: bool = true
-
 var idle_buffer_time := 0.2
 var idle_timer := 0.0
 var last_moving := false
-
 var wiggle_timer := 0.0
 var wiggle_dir := 1.0
+var dialog_instance: Control = null
+var dialog_rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	add_to_group("enemies")
 	rng.randomize()
+	dialog_rng.randomize()
 
 	orbit_phase = rng.randf_range(0.0, TAU)
 	orbit_phase_offset = rng.randf_range(0.0, TAU)
@@ -63,7 +63,12 @@ func _ready() -> void:
 		shockwave.monitoring = false
 		shockwave.monitorable = false
 		if not shockwave.is_connected("body_entered", _on_Shockwave_body_entered):
-			shockwave.body_entered.connect(_on_Shockwave_body_entered)
+			shockwave.body_entered.connect(Callable(self, "_on_Shockwave_body_entered"))
+
+	if dialog_scene:
+		dialog_instance = dialog_scene.instantiate()
+		add_child(dialog_instance)
+		dialog_instance.hide()
 
 func _find_node_recursive(root: Node, target_name: String) -> Node:
 	if not root:
@@ -200,6 +205,8 @@ func _attacker_behavior(_delta: float) -> void:
 func start_attack() -> void:
 	can_attack = false
 	attack()
+	if dialog_instance:
+		dialog_instance.call("show_random_dialog")
 	var delay = attack_cooldown * rng.randf_range(1.0, 1.0 + 0.25)
 	var t = get_tree().create_timer(delay)
 	t.timeout.connect(func(): can_attack = true)
