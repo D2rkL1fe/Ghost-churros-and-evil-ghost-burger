@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dowk2gnfsbgui"
-path="res://.godot/imported/background-tiles.png-db495f2d404280e57e6c8fe9e91203c8.ctex"
+uid="uid://cxmj6jsjg1wof"
+path="res://.godot/imported/fog.png-fafae76c946b5311e94e1074c67da179.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/background-tiles.png"
-dest_files=["res://.godot/imported/background-tiles.png-db495f2d404280e57e6c8fe9e91203c8.ctex"]
+source_file="res://scenes/the_beginning/fog/fog.png"
+dest_files=["res://.godot/imported/fog.png-fafae76c946b5311e94e1074c67da179.ctex"]
 
 [params]
 

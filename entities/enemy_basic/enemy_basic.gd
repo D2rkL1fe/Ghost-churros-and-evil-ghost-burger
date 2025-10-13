@@ -356,6 +356,7 @@ func take_damage(damage: int) -> void:
 		health_bar.value = health
 	if health <= 0:
 		queue_free()
+		SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
 
 # Enemy death, currently simply frees the node
 func die() -> void:

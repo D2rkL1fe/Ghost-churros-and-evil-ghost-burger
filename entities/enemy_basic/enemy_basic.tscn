@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
-[ext_resource type="Texture2D" uid="uid://7g5dymi7nky2" path="res://entities/enemy_basic/fire_ring.png" id="3_64cy1"]
+[ext_resource type="Texture2D" uid="uid://7g5dymi7nky2" path="res://entities/enemy_basic/shockwave/fire_ring.png" id="3_64cy1"]
 [ext_resource type="Texture2D" uid="uid://c2s4abbkqeude" path="res://entities/enemy_basic/run/enemy_basic_run.png" id="3_ypg6x"]
-[ext_resource type="Texture2D" uid="uid://u37p1lj63k7m" path="res://entities/enemy_basic/pixel_art_small.png" id="4_64cy1"]
+[ext_resource type="Texture2D" uid="uid://u37p1lj63k7m" path="res://entities/enemy_basic/shockwave/pixel_art_small.png" id="4_64cy1"]
 [ext_resource type="Texture2D" uid="uid://bugjtc6of30sj" path="res://assets/sprites/health_bar/under.png" id="6_ed0gp"]
 [ext_resource type="Texture2D" uid="uid://3u45di088whm" path="res://assets/sprites/health_bar/border.png" id="7_3mun3"]
 [ext_resource type="Texture2D" uid="uid://dlng5jifkt2rs" path="res://assets/sprites/health_bar/progress.png" id="8_k67v4"]
@@ -136,6 +136,8 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_eilgt")
 
 [node name="Shockwave" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Shockwave"]
 position = Vector2(2.2499974, -1.1920929e-06)

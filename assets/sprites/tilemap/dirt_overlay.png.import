@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bimuwoeh12xue"
-path="res://.godot/imported/overlay.png-84857cbb591192690b6450d172acf14a.ctex"
+uid="uid://boek7edbjf7tb"
+path="res://.godot/imported/dirt_overlay.png-15b1bc43eddf1d58be643089b5bba4d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/main/overlay.png"
-dest_files=["res://.godot/imported/overlay.png-84857cbb591192690b6450d172acf14a.ctex"]
+source_file="res://assets/sprites/tilemap/dirt_overlay.png"
+dest_files=["res://.godot/imported/dirt_overlay.png-15b1bc43eddf1d58be643089b5bba4d2.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxmj6jsjg1wof"
-path="res://.godot/imported/fog.png-9f5e978e287941fb97a6cfbc9af33925.ctex"
+uid="uid://dd0ax70go5v7x"
+path="res://.godot/imported/base_tilemap.png-509546f29ac5f51e11f39839f7c50f34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/the_beginning/fog.png"
-dest_files=["res://.godot/imported/fog.png-9f5e978e287941fb97a6cfbc9af33925.ctex"]
+source_file="res://assets/sprites/tilemap/base_tilemap.png"
+dest_files=["res://.godot/imported/base_tilemap.png-509546f29ac5f51e11f39839f7c50f34.ctex"]
 
 [params]
 

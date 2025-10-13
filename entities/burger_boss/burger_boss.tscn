@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bb6dcbjhgfiii" path="res://entities/burger_boss/burger_boss.gd" id="1_8y5w1"]
 [ext_resource type="PackedScene" uid="uid://c061b32qrmtr" path="res://entities/burger_boss/bounce_bullet/bounce_bullet.tscn" id="2_op18b"]
 [ext_resource type="Texture2D" uid="uid://cdj65x6wvtcdj" path="res://entities/burger_boss/idle/burger_boss_idle.png" id="2_u688g"]
-[ext_resource type="PackedScene" uid="uid://bmlw1nxt62n7b" path="res://laser_beam.tscn" id="3_assbw"]
+[ext_resource type="PackedScene" uid="uid://bmlw1nxt62n7b" path="res://entities/burger_boss/lazer_beam/laser_beam.tscn" id="3_assbw"]
 [ext_resource type="Texture2D" uid="uid://yillav8pnv21" path="res://entities/burger_boss/run/burger_boss_run.png" id="3_mns20"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="4_ijqrb"]
 [ext_resource type="Texture2D" uid="uid://bugjtc6of30sj" path="res://assets/sprites/health_bar/under.png" id="6_arjy4"]
@@ -125,7 +125,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_arjy4"]
 resource_name = "jump"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -192,4 +191,3 @@ texture_progress = ExtResource("8_s3kdc")
 libraries = {
 &"": SubResource("AnimationLibrary_s3kdc")
 }
-autoplay = "jump"

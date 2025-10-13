@@ -1,6 +1,6 @@
 extends Line2D
 
-@export var color: Color = Color("ff2222")
+@export var color: Color = Color("ff2222") # <--- zashto gpt-to iska red
 @export var beam_width: float = 3.0
 @export var length: float = 600.0
 

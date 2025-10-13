@@ -46,9 +46,10 @@ func shoot_bullet() -> void:
 	if bullet.has_meta("direction") or "direction" in bullet:
 		bullet.direction = (get_global_mouse_position() - global_position).normalized()
 	ammo -= 1
+	GlobalStats.add_churros_bullets(-1)
+	SoundPlayer.play_sound(SoundPlayer.SHOOT)
+	
 	# optional global updates / sounds
-	# GlobalStats.add_churros_bullets(-1)
-	# SoundPlayer.play_sound(SoundPlayer.SHOOT)
 
 func take_damage(amount: int) -> void:
 	if health <= 0:

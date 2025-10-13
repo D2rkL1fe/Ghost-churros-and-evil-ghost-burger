@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmlw1nxt62n7b"]
 
-[ext_resource type="Script" uid="uid://d0wfy4dxslkqu" path="res://LaserBeam.gd" id="1_dqaer"]
-[ext_resource type="Texture2D" uid="uid://jub4b4je51y" path="res://entities/burger_boss/lazer_beam_circle.png" id="2_ni8j5"]
+[ext_resource type="Script" uid="uid://d0wfy4dxslkqu" path="res://entities/burger_boss/lazer_beam/lazer_beam.gd" id="1_dqaer"]
+[ext_resource type="Texture2D" uid="uid://jub4b4je51y" path="res://entities/burger_boss/lazer_beam/lazer_beam_circle.png" id="2_dqaer"]
 
 [sub_resource type="Curve" id="Curve_sr12g"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14689265, 1), 0.0, 0.0, 0, 0, Vector2(0.85310733, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -65,7 +65,7 @@ z_index = 1
 position = Vector2(3, 0.0010819435)
 rotation = 0.00036063642
 amount = 24
-texture = ExtResource("2_ni8j5")
+texture = ExtResource("2_dqaer")
 lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_bd3iy")
 
@@ -74,7 +74,7 @@ z_index = 1
 position = Vector2(247.99998, 0.08943796)
 rotation = 0.00036063642
 amount = 24
-texture = ExtResource("2_ni8j5")
+texture = ExtResource("2_dqaer")
 lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_qwbgx")
 
@@ -83,6 +83,6 @@ z_index = 1
 position = Vector2(124.999985, 0.045079585)
 rotation = 0.00036063642
 amount = 12
-texture = ExtResource("2_ni8j5")
+texture = ExtResource("2_dqaer")
 lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_sgvm5")

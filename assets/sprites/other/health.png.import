@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh6esxi6t745e"
-path="res://.godot/imported/health.png-6c8106ac844ce19671b910a4358bc5f2.ctex"
+path="res://.godot/imported/health.png-223b5cd42c3b0f4c20e480210a8d57db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemy_basic/health.png"
-dest_files=["res://.godot/imported/health.png-6c8106ac844ce19671b910a4358bc5f2.ctex"]
+source_file="res://assets/sprites/other/health.png"
+dest_files=["res://.godot/imported/health.png-223b5cd42c3b0f4c20e480210a8d57db.ctex"]
 
 [params]
 

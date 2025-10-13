@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u37p1lj63k7m"
-path="res://.godot/imported/pixel_art_small.png-d341d90afb75386ad44d2451fef04a8c.ctex"
+uid="uid://p6281mpyy6ep"
+path="res://.godot/imported/dirt_overlay1.png-64ebf48789bdb80c3d07ad2863790d96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemy_basic/pixel_art_small.png"
-dest_files=["res://.godot/imported/pixel_art_small.png-d341d90afb75386ad44d2451fef04a8c.ctex"]
+source_file="res://scenes/the_beginning/dirt_overlays/dirt_overlay1.png"
+dest_files=["res://.godot/imported/dirt_overlay1.png-64ebf48789bdb80c3d07ad2863790d96.ctex"]
 
 [params]
 

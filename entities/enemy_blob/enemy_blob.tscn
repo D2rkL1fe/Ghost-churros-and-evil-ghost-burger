@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://b3icjlw7qo21d"]
 
-[ext_resource type="Script" uid="uid://cl3gecsf3uhfl" path="res://entities/enemy_blos/enemy_blob.gd" id="1_ea716"]
-[ext_resource type="Texture2D" uid="uid://crbx1fbbfjjx1" path="res://entities/enemy_blos/idle/enemy_blob_idle.png" id="2_ea716"]
-[ext_resource type="Texture2D" uid="uid://dlcc7ybxq85o0" path="res://entities/enemy_blos/run/enemy_blob_run.png" id="3_3xl10"]
+[ext_resource type="Script" uid="uid://cl3gecsf3uhfl" path="res://entities/enemy_blob/enemy_blob.gd" id="1_ea716"]
+[ext_resource type="Texture2D" uid="uid://crbx1fbbfjjx1" path="res://entities/enemy_blob/idle/enemy_blob_idle.png" id="2_ea716"]
+[ext_resource type="Texture2D" uid="uid://dlcc7ybxq85o0" path="res://entities/enemy_blob/run/enemy_blob_run.png" id="3_3xl10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_102up"]
 atlas = ExtResource("2_ea716")
