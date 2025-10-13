@@ -1,6 +1,6 @@
 extends Line2D
 
-@export var color: Color = Color("ff2222") # <--- zashto gpt-to iska red
+@export var color: Color = Color("00ffffff")																				 # <--- zashto gpt-to iska red
 @export var beam_width: float = 3.0
 @export var length: float = 600.0
 
@@ -42,3 +42,9 @@ func _set_particle_colors(c: Color) -> void:
 			if mat is ParticleProcessMaterial:
 				# Set a solid color for all particles
 				mat.color = c
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.take_damage(20)
+		print(body)

@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name BurgerBoss
 
 @export var bullet_scene: PackedScene
-@export var laser_scene: PackedScene
+@export var burger_laser_scene: PackedScene
 
 @export var bullet_interval: float = 3.0
 @export var laser_interval: float = 4.5
@@ -11,7 +11,7 @@ class_name BurgerBoss
 @export var bullet_count: int = 12
 @export var spawn_offset: float = 20.0
 @export var bullet_bounces: int = 3
-@export var laser_speed: float = 500.0
+@export var laser_speed: float = 250.0
 @export var laser_duration: float = 0.6
 
 @export var base_move_speed: float = 150.0
@@ -25,6 +25,9 @@ class_name BurgerBoss
 @export var aggressive_distance: float = 900.0
 @export var max_hp: int = 1000
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: TextureProgressBar = $HealthBarComponent
+
 var hp: int
 var _bullet_timer = 0.0
 var _laser_timer = 0.0
@@ -37,6 +40,8 @@ var player: Node2D
 
 func _ready():
 	hp = max_hp
+	health_bar.max_value = max_hp
+	health_bar.value = hp
 	rng.randomize()
 	player = get_tree().get_first_node_in_group("player")
 
@@ -59,13 +64,19 @@ func _process(delta):
 		_stop_timer -= delta
 		if _stop_timer <= 0:
 			_is_attacking = false
+		
+		sprite.play("idle")
 	else:
 		_move(delta, low_player)
+		
+		sprite.play("run")
 
 func _move(delta, low_player):
 	if not player: return
 	_move_timer -= delta
 	var to_player = player.global_position - global_position
+	
+	sprite.flip_h = to_player.x < 0
 
 	if _move_timer <= 0:
 		_move_timer = move_change_interval + rng.randf_range(-0.3, 0.3)
@@ -74,6 +85,7 @@ func _move(delta, low_player):
 
 	var cur_speed = aggressive_move_speed if low_player else base_move_speed
 	var noise = Vector2(rng.randf_range(-0.03, 0.03), rng.randf_range(-0.03, 0.03))
+	
 	velocity = (_move_dir + noise).normalized() * cur_speed
 	move_and_slide()
 
@@ -100,18 +112,21 @@ func _fire_bullets():
 		get_tree().current_scene.add_child(b)
 
 func _fire_laser_at_player():
-	if not laser_scene or not player: return
+	if not burger_laser_scene or not player: return
 	var dir = (player.global_position - global_position).normalized()
-	var l = laser_scene.instantiate()
+	var l = burger_laser_scene.instantiate()
 	l.global_position = global_position + dir * spawn_offset * 0.3
 	if "setup" in l:
 		l.setup(dir, laser_speed, laser_duration)
 	get_tree().current_scene.add_child(l)
 
 func take_damage(amount: int):
-	hp = max(hp - amount, 0)
+	hp -= amount
+	if health_bar:
+		health_bar.value = hp
 	if hp <= 0:
 		queue_free()
+		SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
 
 func _player_health_ratio() -> float:
 	if not player or not ("health" in player and "max_health" in player) or player.max_health <= 0:

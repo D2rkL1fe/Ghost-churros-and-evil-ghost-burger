@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://uq7pcty8pgyk"]
+[gd_scene load_steps=27 format=3 uid="uid://uq7pcty8pgyk"]
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://3u45di088whm" path="res://assets/sprites/health_bar/border.png" id="7_3mun3"]
 [ext_resource type="Texture2D" uid="uid://dlng5jifkt2rs" path="res://assets/sprites/health_bar/progress.png" id="8_k67v4"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="9_3mun3"]
+[ext_resource type="PackedScene" uid="uid://c4d0k13qfio8c" path="res://components/DialogComponent/dialog_component.tscn" id="10_k67v4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ruqu"]
 atlas = ExtResource("1_eilgt")
@@ -170,3 +171,9 @@ texture_progress = ExtResource("8_k67v4")
 [node name="ShadowComponent" parent="." instance=ExtResource("9_3mun3")]
 position = Vector2(0, 6.9999995)
 scale = Vector2(0.5847378, 0.41596472)
+
+[node name="DialogComponent" parent="." instance=ExtResource("10_k67v4")]
+offset_left = 19.0
+offset_top = -20.0
+offset_right = 19.0
+offset_bottom = -20.0

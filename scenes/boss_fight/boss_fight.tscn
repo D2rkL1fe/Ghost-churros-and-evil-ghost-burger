@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr2yyjrovv7b2"]
+[gd_scene load_steps=6 format=3 uid="uid://dr2yyjrovv7b2"]
 
 [ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="1_tetx3"]
 [ext_resource type="PackedScene" uid="uid://btoh8h42i88yn" path="res://entities/burger_boss/burger_boss.tscn" id="2_21wde"]
 [ext_resource type="PackedScene" uid="uid://dahkdou1cgc4w" path="res://entities/churros/churros.tscn" id="3_21wde"]
+[ext_resource type="PackedScene" uid="uid://cq557m1o1by3b" path="res://ui/UI.tscn" id="4_5iyxc"]
 
 [sub_resource type="Environment" id="Environment_tetx3"]
 background_mode = 3
@@ -18,7 +19,25 @@ position = Vector2(-1, 6)
 
 [node name="BurgerBoss" parent="." instance=ExtResource("2_21wde")]
 position = Vector2(118, -12)
-laser_scene = null
+bullet_interval = null
+laser_interval = null
+bullet_speed = null
+bullet_damage = null
+bullet_count = null
+spawn_offset = null
+bullet_bounces = null
+laser_speed = null
+laser_duration = null
+base_move_speed = null
+aggressive_move_speed = null
+stop_time = null
+min_distance = null
+max_distance = null
+low_hp_threshold = null
+move_change_interval = null
+engage_distance = null
+aggressive_distance = null
+max_hp = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tetx3")
@@ -31,3 +50,5 @@ position = Vector2(-11, -61)
 [node name="Churros3" parent="." instance=ExtResource("3_21wde")]
 
 [node name="Churros4" parent="." instance=ExtResource("3_21wde")]
+
+[node name="UI" parent="." instance=ExtResource("4_5iyxc")]
