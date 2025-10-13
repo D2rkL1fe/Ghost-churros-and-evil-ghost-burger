@@ -16,7 +16,7 @@ glow_hdr_threshold = 0.62
 position = Vector2(-1, 6)
 
 [node name="BurgerBoss" parent="." instance=ExtResource("2_21wde")]
-position = Vector2(118, -12)
+position = Vector2(105, -8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tetx3")
