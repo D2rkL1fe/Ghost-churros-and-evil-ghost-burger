@@ -1,54 +1,28 @@
 extends CharacterBody2D
-
-# Role of this enemy, can be "defender" or "attacker"
 @export_enum("defender", "attacker") var role: String = "defender"
 
-# Movement speed of the enemy
 @export var move_speed: float = 60.0
-
-# Damage dealt by the shockwave attack
 @export var shockwave_damage: int = 20
-
-# Time in seconds between attacks
 @export var attack_cooldown: float = 1.3
-
-# Knockback force applied to player when hit by shockwave
 @export var knockback_force: float = 250.0
-
-# Time it takes for shockwave visual to scale up
 @export var shockwave_scale_time: float = 0.25
-
-# Maximum scale of shockwave visual effect
 @export var shockwave_max_scale: float = 3.0
-
-# How far the enemy can detect the player
 @export var detection_radius: float = 25.0
-
-# Distance at which enemy can attack
 @export var attack_range: float = 48.0
-
-# Radius around a churros that the defender will protect
 @export var defense_radius: float = 150.0
-
-# Orbiting parameters for defenders around churros
 @export var orbit_distance: float = 64.0
 @export var orbit_speed: float = 1.6
 @export var orbit_spread: float = 0.9
 
-# Health of the enemy
 @export var health: int = 100
-# Reference to a health bar UI element
 @export var health_bar: TextureProgressBar
 
-# Random number generator for movement, attack, and orbit variation
 var rng := RandomNumberGenerator.new()
 
-# Internal variables for orbiting defenders
 var orbit_phase: float = 0.0
 var orbit_speed_offset: float = 1.0
 var orbit_phase_offset: float = 0.0
 
-# References to child nodes for animations and effects
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shockwave: Area2D = $Shockwave
 @onready var aura_sprite: Sprite2D = $Shockwave/Sprite2D
@@ -56,16 +30,11 @@ var orbit_phase_offset: float = 0.0
 @onready var aura_particles: GPUParticles2D = $Shockwave/FireParticles
 @onready var cam: Camera2D = get_tree().get_first_node_in_group("camera")
 
-# Reference to the player node
 var player: Node2D = null
-# List of churros objects in the scene
 var churros_list: Array = []
-# Target churros this defender is protecting
 var defending_target: Node2D = null
-# Whether this enemy can currently attack
 var can_attack: bool = true
 
-# Timers for idle/wiggle animations
 var idle_buffer_time := 0.2
 var idle_timer := 0.0
 var last_moving := false
@@ -73,22 +42,18 @@ var last_moving := false
 var wiggle_timer := 0.0
 var wiggle_dir := 1.0
 
-# Called when the enemy is initialized
 func _ready() -> void:
 	add_to_group("enemies")
 	rng.randomize()
 
-	# Randomize orbiting parameters to make each defender move uniquely
 	orbit_phase = rng.randf_range(0.0, TAU)
 	orbit_phase_offset = rng.randf_range(0.0, TAU)
 	orbit_speed_offset = rng.randf_range(1.0 - orbit_spread, 1.0 + orbit_spread)
 	orbit_distance += rng.randf_range(-10.0, 10.0)
 
-	# Find player and all churros in the scene
 	player = _find_node_recursive(get_tree().get_current_scene(), "Player")
 	churros_list = _find_all_churros(get_tree().get_current_scene())
 
-	# Initialize shockwave and aura visuals
 	if aura_sprite:
 		aura_sprite.visible = false
 		aura_sprite.scale = Vector2(0.1, 0.1)
@@ -100,7 +65,6 @@ func _ready() -> void:
 		if not shockwave.is_connected("body_entered", _on_Shockwave_body_entered):
 			shockwave.body_entered.connect(_on_Shockwave_body_entered)
 
-# Recursively searches for a node by name in the scene tree
 func _find_node_recursive(root: Node, target_name: String) -> Node:
 	if not root:
 		return null
@@ -113,7 +77,6 @@ func _find_node_recursive(root: Node, target_name: String) -> Node:
 				return found
 	return null
 
-# Returns all churros in the scene, using both group and name search
 func _find_all_churros(root: Node) -> Array:
 	var list: Array = []
 	for n in get_tree().get_nodes_in_group("churros"):
@@ -123,7 +86,6 @@ func _find_all_churros(root: Node) -> Array:
 		_collect_churros_recursive(root, list)
 	return list
 
-# Helper function to recursively collect churros nodes
 func _collect_churros_recursive(node: Node, out_list: Array) -> void:
 	for child in node.get_children():
 		if child is Node2D:
@@ -132,7 +94,6 @@ func _collect_churros_recursive(node: Node, out_list: Array) -> void:
 				out_list.append(child)
 		_collect_churros_recursive(child, out_list)
 
-# Main physics processing
 func _physics_process(delta: float) -> void:
 	if not player:
 		player = _find_node_recursive(get_tree().get_current_scene(), "Player")
@@ -141,21 +102,16 @@ func _physics_process(delta: float) -> void:
 	if not player:
 		return
 
-	# Ensure there is always one attacker
 	_ensure_attacker_exists()
 
-	# Call behavior based on role
 	if role == "defender":
 		_defender_behavior(delta)
 	else:
 		_attacker_behavior(delta)
 
-	# Apply movement
 	move_and_slide()
 
-# Defender AI behavior
 func _defender_behavior(delta: float) -> void:
-	# Assign nearest churros if not already defending one
 	if defending_target == null or not is_instance_valid(defending_target):
 		defending_target = _select_nearest_churros_to_self()
 	if defending_target == null:
@@ -167,12 +123,10 @@ func _defender_behavior(delta: float) -> void:
 	var dist_player_to_target = player.global_position.distance_to(center)
 	var to_player = player.global_position - global_position
 
-	# Attack player if close enough
 	if dist_player_to_target <= defense_radius:
 		if to_player.length() <= attack_range and can_attack:
 			start_attack()
 
-		# Move toward player if far away
 		if to_player.length() > 6:
 			velocity += to_player.normalized() * move_speed * 0.75
 			velocity = velocity.clamp(Vector2(-60, -60), Vector2(60, 60))
@@ -181,7 +135,6 @@ func _defender_behavior(delta: float) -> void:
 			velocity = Vector2.ZERO
 			_play_idle()
 	else:
-		# Orbit around churros if player is outside defense radius
 		orbit_phase += orbit_speed * orbit_speed_offset * delta
 		var target_angle = orbit_phase + orbit_phase_offset
 		var orbit_pos = center + Vector2(orbit_distance, 0).rotated(target_angle)
@@ -203,11 +156,9 @@ func _defender_behavior(delta: float) -> void:
 				velocity = Vector2.ZERO
 				_play_idle()
 
-	# Add slight rotation wiggle for visual effect
 	wiggle_timer += delta
 	sprite.rotation = sin(wiggle_timer * 6.0) * 0.07
 
-# Returns a dictionary counting defenders per churros
 func _get_churros_defender_counts() -> Dictionary:
 	var counts := {}
 	for c in churros_list:
@@ -219,7 +170,6 @@ func _get_churros_defender_counts() -> Dictionary:
 			counts[e.defending_target] += 1
 	return counts
 
-# Selects the nearest churros to defend, factoring in number of other defenders
 func _select_nearest_churros_to_self() -> Node2D:
 	var nearest: Node2D = null
 	var best := INF
@@ -235,7 +185,6 @@ func _select_nearest_churros_to_self() -> Node2D:
 			nearest = c
 	return nearest
 
-# Attacker AI behavior
 func _attacker_behavior(_delta: float) -> void:
 	var to_player = player.global_position - global_position
 	if to_player.length() > 8:
@@ -248,7 +197,6 @@ func _attacker_behavior(_delta: float) -> void:
 	if can_attack and to_player.length() <= attack_range:
 		start_attack()
 
-# Initiates an attack with cooldown
 func start_attack() -> void:
 	can_attack = false
 	attack()
@@ -256,7 +204,6 @@ func start_attack() -> void:
 	var t = get_tree().create_timer(delay)
 	t.timeout.connect(func(): can_attack = true)
 
-# Performs the visual and logic effects of the shockwave attack
 func attack() -> void:
 	if aura_sprite:
 		aura_sprite.visible = true
@@ -269,12 +216,10 @@ func attack() -> void:
 	if aura_particles:
 		aura_particles.restart()
 
-	# Play sound and camera shake if available
 	SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
 	if cam and cam.has_method("shake"):
 		cam.shake(3.0, 0.08)
 
-	# Tween shockwave visuals
 	var tween = get_tree().create_tween()
 	tween.set_parallel()
 	if aura_sprite:
@@ -285,7 +230,6 @@ func attack() -> void:
 
 	await tween.finished
 
-	# Reset visuals
 	if aura_sprite:
 		aura_sprite.visible = false
 		aura_sprite.modulate.a = 1.0
@@ -296,7 +240,6 @@ func attack() -> void:
 		shockwave.monitoring = false
 		shockwave.monitorable = false
 
-# Called when a body enters the shockwave area
 func _on_Shockwave_body_entered(body: Node) -> void:
 	if not body:
 		return
@@ -308,7 +251,6 @@ func _on_Shockwave_body_entered(body: Node) -> void:
 		var push = (body.global_position - global_position).normalized() * knockback_force
 		body.apply_knockback(push)
 
-# Ensures that at least one enemy is always an attacker
 func _ensure_attacker_exists() -> void:
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for e in enemies:
@@ -334,22 +276,17 @@ func _ensure_attacker_exists() -> void:
 		can_attack = false
 		get_tree().create_timer(0.2).timeout.connect(func(): can_attack = true)
 
-# Play running animation and flip sprite if needed
 func _play_run(hx: float) -> void:
 	if sprite:
 		sprite.flip_h = hx < 0
 		if sprite.animation != "run":
 			sprite.play("run")
 
-# Play idle animation
 func _play_idle() -> void:
 	if sprite:
 		if sprite.animation != "idle":
 			sprite.play("idle")
 
-# ====== DAMAGE HANDLING ======
-
-# Apply damage to this enemy
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health_bar:
@@ -358,10 +295,8 @@ func take_damage(damage: int) -> void:
 		queue_free()
 		SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
 
-# Enemy death, currently simply frees the node
 func die() -> void:
 	queue_free()
 
-# Apply knockback force to this enemy
 func apply_knockback(force: Vector2) -> void:
 	velocity += force

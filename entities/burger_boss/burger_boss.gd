@@ -1,86 +1,119 @@
 extends CharacterBody2D
 class_name BurgerBoss
 
-# Scenes
 @export var bullet_scene: PackedScene
 @export var laser_scene: PackedScene
 
-# Firing intervals
 @export var bullet_interval: float = 3.0
 @export var laser_interval: float = 4.5
-
-# Bullet settings
 @export var bullet_speed: float = 200.0
 @export var bullet_damage: int = 15
 @export var bullet_count: int = 12
 @export var spawn_offset: float = 20.0
 @export var bullet_bounces: int = 3
-
-# Laser settings
 @export var laser_speed: float = 500.0
 @export var laser_duration: float = 0.6
 
-var _bullet_timer: float = 0.0
-var _laser_timer: float = 0.0
+@export var base_move_speed: float = 150.0
+@export var aggressive_move_speed: float = 190.0
+@export var stop_time: float = 1.0
+@export var min_distance: float = 100.0
+@export var max_distance: float = 800.0
+@export var low_hp_threshold: float = 0.3
+@export var move_change_interval: float = 2.0
+@export var engage_distance: float = 600.0
+@export var aggressive_distance: float = 900.0
+@export var max_hp: int = 1000
+
+var hp: int
+var _bullet_timer = 0.0
+var _laser_timer = 0.0
+var _stop_timer = 0.0
+var _move_timer = 0.0
+var _is_attacking = false
+var _move_dir = Vector2.ZERO
 var rng := RandomNumberGenerator.new()
 var player: Node2D
 
-func _ready() -> void:
+func _ready():
+	hp = max_hp
 	rng.randomize()
 	player = get_tree().get_first_node_in_group("player")
 
-func _process(delta: float) -> void:
-	if not player:
-		return
-
+func _process(delta):
+	if not player: return
 	_bullet_timer += delta
 	_laser_timer += delta
 
-	if _bullet_timer >= bullet_interval:
-		_bullet_timer = 0.0
-		_fire_bullets()
+	var low_player = _player_health_ratio() <= 0.4
 
-	if _laser_timer >= laser_interval:
-		_laser_timer = 0.0
-		_fire_laser_at_player()
+	if not _is_attacking and global_position.distance_to(player.global_position) <= (aggressive_distance if low_player else engage_distance):
+		if _bullet_timer >= bullet_interval:
+			_start_attack("_fire_bullets")
+			_bullet_timer = 0
+		elif _laser_timer >= laser_interval:
+			_start_attack("_fire_laser_at_player")
+			_laser_timer = 0
 
-# ------------------ BULLETS ------------------
-func _fire_bullets() -> void:
-	if bullet_scene == null:
-		return
+	if _is_attacking:
+		_stop_timer -= delta
+		if _stop_timer <= 0:
+			_is_attacking = false
+	else:
+		_move(delta, low_player)
 
+func _move(delta, low_player):
+	if not player: return
+	_move_timer -= delta
+	var to_player = player.global_position - global_position
+
+	if _move_timer <= 0:
+		_move_timer = move_change_interval + rng.randf_range(-0.3, 0.3)
+		var angle_dev = rng.randf_range(-PI/12, PI/12) if hp < max_hp * low_hp_threshold else rng.randf_range(-PI/20, PI/20)
+		_move_dir = (to_player if hp >= max_hp * low_hp_threshold else -to_player).normalized().rotated(angle_dev)
+
+	var cur_speed = aggressive_move_speed if low_player else base_move_speed
+	var noise = Vector2(rng.randf_range(-0.03, 0.03), rng.randf_range(-0.03, 0.03))
+	velocity = (_move_dir + noise).normalized() * cur_speed
+	move_and_slide()
+
+func _start_attack(method_name: String):
+	_is_attacking = true
+	_stop_timer = stop_time
+	velocity = Vector2.ZERO
+	move_and_slide()
+	call_deferred(method_name)
+
+func _fire_bullets():
+	if not bullet_scene: return
 	for i in range(bullet_count):
-		var angle = TAU * float(i) / float(bullet_count)
-		var dir = Vector2.RIGHT.rotated(angle)
-		var bullet = bullet_scene.instantiate()
+		var angle = TAU * i / bullet_count
+		var b = bullet_scene.instantiate()
+		b.global_position = global_position + Vector2.RIGHT.rotated(angle) * spawn_offset
+		for prop in ["direction", "speed", "damage", "bounces_left"]:
+			if prop in b:
+				match prop:
+					"direction": b.direction = Vector2.RIGHT.rotated(angle)
+					"speed": b.speed = bullet_speed
+					"damage": b.damage = bullet_damage
+					"bounces_left": b.bounces_left = bullet_bounces
+		get_tree().current_scene.add_child(b)
 
-		bullet.global_position = global_position + dir * spawn_offset
-		if "direction" in bullet:
-			bullet.direction = dir
-		else:
-			bullet.rotation = angle
-
-		if "speed" in bullet:
-			bullet.speed = bullet_speed
-		if "damage" in bullet:
-			bullet.damage = bullet_damage
-		if "bounces_left" in bullet:
-			bullet.bounces_left = bullet_bounces
-
-		get_tree().current_scene.add_child(bullet)
-
-# ------------------ LASER ------------------
-func _fire_laser_at_player() -> void:
-	if laser_scene == null or player == null:
-		return
-
+func _fire_laser_at_player():
+	if not laser_scene or not player: return
 	var dir = (player.global_position - global_position).normalized()
-	var laser = laser_scene.instantiate()
+	var l = laser_scene.instantiate()
+	l.global_position = global_position + dir * spawn_offset * 0.3
+	if "setup" in l:
+		l.setup(dir, laser_speed, laser_duration)
+	get_tree().current_scene.add_child(l)
 
-	var laser_offset = spawn_offset * 0.3  
-	laser.global_position = global_position + dir * laser_offset
+func take_damage(amount: int):
+	hp = max(hp - amount, 0)
+	if hp <= 0:
+		queue_free()
 
-	if "setup" in laser:
-		laser.setup(dir, laser_speed, laser_duration)
-
-	get_tree().current_scene.add_child(laser)
+func _player_health_ratio() -> float:
+	if not player or not ("health" in player and "max_health" in player) or player.max_health <= 0:
+		return 1.0
+	return float(player.health) / float(player.max_health)
