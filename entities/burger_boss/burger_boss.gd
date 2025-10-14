@@ -8,9 +8,12 @@ class_name BurgerBoss
 @export var bullet_damage: int = 15
 @export var bullet_count: int = 12
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 @export var spawn_offset: float = 20.0           # spawn outside boss collider
 @export var bullet_bounces: int = 3
 =======
+=======
+>>>>>>> Stashed changes
 @export var spawn_offset: float = 20.0
 @export var bullet_bounces: int = 10
 @export var laser_speed: float = 250.0

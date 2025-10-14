@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [gd_scene load_steps=21 format=4 uid="uid://du44uvfexbik5"]
+=======
+[gd_scene load_steps=25 format=4 uid="uid://du44uvfexbik5"]
+>>>>>>> Stashed changes
 =======
 [gd_scene load_steps=25 format=4 uid="uid://du44uvfexbik5"]
 >>>>>>> Stashed changes
@@ -21,6 +25,9 @@
 =======
 [ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/menu/background-tiles.png" id="13_hpx1r"]
 [ext_resource type="PackedScene" uid="uid://bmsl65tavr6g7" path="res://entities/fog_of_war/fog_of_war.tscn" id="14_n4282"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_247n0"]
@@ -182,7 +189,10 @@ sources/0 = SubResource("TileSetAtlasSource_v3t81")
 sources/1 = SubResource("TileSetScenesCollectionSource_hpx1r")
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 [sub_resource type="Gradient" id="Gradient_hpx1r"]
 offsets = PackedFloat32Array(0.88666666, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
@@ -319,4 +329,7 @@ texture = ExtResource("13_hpx1r")
 navigation_polygon = SubResource("NavigationPolygon_hpx1r")
 
 [node name="FogOfWar" parent="." instance=ExtResource("14_n4282")]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
