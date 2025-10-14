@@ -23,6 +23,7 @@ DiamondTransition="*res://transitions/DiamondTransition/diamond_transition.tscn"
 GlobalStats="*res://globals/GlobalStats.gd"
 Global="*res://globals/Global.gd"
 Settings="*res://ui/settings/settings.tscn"
+Particles="*res://globals/Particles.gd"
 
 [display]
 

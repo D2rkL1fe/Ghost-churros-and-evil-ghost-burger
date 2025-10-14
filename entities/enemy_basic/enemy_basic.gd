@@ -77,7 +77,7 @@ func _ready() -> void:
 		if node is Node2D:
 			churros_list.append(node as Node2D)
 
-	_setup_shockwave()
+	#_setup_shockwave()
 	_setup_dialog()
 	_setup_navigation()
 
@@ -120,8 +120,8 @@ func _initialize_wanderer_state() -> void:
 	if shockwave:
 		shockwave.monitoring = false
 		shockwave.monitorable = false
-		if not shockwave.is_connected("body_entered", _on_Shockwave_body_entered):
-			shockwave.body_entered.connect(Callable(self, "_on_Shockwave_body_entered"))
+		#if not shockwave.is_connected("body_entered", _on_Shockwave_body_entered):
+			#shockwave.body_entered.connect(Callable(self, "_on_Shockwave_body_entered"))
 
 func _setup_dialog() -> void:
 	if dialog_scene:
@@ -316,6 +316,9 @@ func take_damage(damage: int) -> void:
 func die() -> void:
 	if role == "wanderer":
 		_alert_all_defenders()
+	
+	Particles.create_particles(global_position)
+	
 	queue_free()
 
 func apply_knockback(force: Vector2) -> void:

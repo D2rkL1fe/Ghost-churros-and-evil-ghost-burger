@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://uq7pcty8pgyk"]
+[gd_scene load_steps=26 format=3 uid="uid://uq7pcty8pgyk"]
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
@@ -119,8 +119,9 @@ scale_min = 0.39999998
 scale_max = 0.79999995
 color_ramp = SubResource("GradientTexture1D_y300u")
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Enemy"]]
 collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_5ve1f")
 health_bar = NodePath("HealthBarComponent")
 
@@ -180,3 +181,5 @@ debug_enabled = true
 
 [node name="BlastSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ylhma")
+
+[connection signal="body_entered" from="Shockwave" to="." method="_on_shockwave_body_entered"]
