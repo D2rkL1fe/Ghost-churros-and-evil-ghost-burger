@@ -15,9 +15,8 @@ extends CharacterBody2D
 @export var orbit_distance: float = 64.0
 @export var orbit_speed: float = 1.6
 @export var orbit_spread: float = 0.9
-@export var health: int = 100
-# ACTION REQUIRED: This MUST be assigned in the Inspector.
-@export var health_bar: TextureProgressBar 
+@export var health: int = 60
+@export var health_bar: TextureProgressBar
 @export var dialog_scene: PackedScene
 @export var wander_radius: float = 300.0
 
@@ -111,10 +110,18 @@ func _initialize_wanderer_state() -> void:
 	if role == "wanderer":
 		_set_new_wander_target()
 
-func _setup_shockwave() -> void:
-	if aura_sprite: aura_sprite.visible = false
-	if shockwave: shockwave.monitoring = false
-	shockwave.body_entered.connect(_on_shockwave_body_entered)
+	health_bar.max_value = health
+
+	if aura_sprite:
+		aura_sprite.visible = false
+		aura_sprite.scale = Vector2(0.1, 0.1)
+	if shockwave_shape:
+		shockwave_shape.scale = Vector2(0.1, 0.1)
+	if shockwave:
+		shockwave.monitoring = false
+		shockwave.monitorable = false
+		if not shockwave.is_connected("body_entered", _on_Shockwave_body_entered):
+			shockwave.body_entered.connect(Callable(self, "_on_Shockwave_body_entered"))
 
 func _setup_dialog() -> void:
 	if dialog_scene:

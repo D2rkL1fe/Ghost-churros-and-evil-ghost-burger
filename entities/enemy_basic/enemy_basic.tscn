@@ -5,9 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://7g5dymi7nky2" path="res://entities/enemy_basic/shockwave/fire_ring.png" id="3_64cy1"]
 [ext_resource type="Texture2D" uid="uid://c2s4abbkqeude" path="res://entities/enemy_basic/run/enemy_basic_run.png" id="3_ypg6x"]
 [ext_resource type="Texture2D" uid="uid://u37p1lj63k7m" path="res://entities/enemy_basic/shockwave/pixel_art_small.png" id="4_64cy1"]
-[ext_resource type="Texture2D" uid="uid://bugjtc6of30sj" path="res://assets/sprites/health_bar/under.png" id="6_ed0gp"]
-[ext_resource type="Texture2D" uid="uid://3u45di088whm" path="res://assets/sprites/health_bar/border.png" id="7_3mun3"]
-[ext_resource type="Texture2D" uid="uid://dlng5jifkt2rs" path="res://assets/sprites/health_bar/progress.png" id="8_k67v4"]
+[ext_resource type="PackedScene" uid="uid://b6fxkbsyvt37f" path="res://components/HealthBarComponent/health_bar_component.tscn" id="6_ed0gp"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="9_3mun3"]
 [ext_resource type="PackedScene" uid="uid://c4d0k13qfio8c" path="res://components/DialogComponent/dialog_component.tscn" id="10_k67v4"]
 [ext_resource type="AudioStream" uid="uid://um2kp0wi7aw" path="res://assets/sfx/explosion.wav" id="11_ylhma"]
@@ -124,6 +122,7 @@ color_ramp = SubResource("GradientTexture1D_y300u")
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_5ve1f")
+health_bar = NodePath("HealthBarComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -158,15 +157,9 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_5ve1f")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -20.0
+[node name="HealthBarComponent" parent="." instance=ExtResource("6_ed0gp")]
 offset_top = -24.0
-offset_right = -19.0
-offset_bottom = -23.0
-value = 100.0
-texture_under = ExtResource("6_ed0gp")
-texture_over = ExtResource("7_3mun3")
-texture_progress = ExtResource("8_k67v4")
+offset_bottom = -18.0
 
 [node name="ShadowComponent" parent="." instance=ExtResource("9_3mun3")]
 position = Vector2(0, 6.9999995)

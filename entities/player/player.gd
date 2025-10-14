@@ -4,7 +4,7 @@ class_name Player
 @export var speed := 150.0
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown := 0.25
-@export var recoil_force := 240.0
+@export var recoil_force := 360.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $HealthBarComponent
@@ -22,7 +22,7 @@ func _ready():
 
 func _physics_process(delta):
 	var dir = Input.get_vector("left", "right", "up", "down")
-	velocity = lerp(velocity, dir * speed, 8.0 * delta)
+	velocity = lerp(velocity, dir * speed, 16.0 * delta)
 	
 	move_and_slide()
 	
