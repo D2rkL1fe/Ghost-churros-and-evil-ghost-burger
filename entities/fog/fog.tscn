@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwfahhxth4su1"]
+
+[ext_resource type="Texture2D" uid="uid://ti5lhm25lleg" path="res://entities/fog/fog.png" id="1_6xsjb"]
+[ext_resource type="Script" uid="uid://gt3bx7k3syqe" path="res://entities/fog/fog.gd" id="2_w42aq"]
+
+[node name="Fog" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_6xsjb")
+script = ExtResource("2_w42aq")

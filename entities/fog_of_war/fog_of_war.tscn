@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmsl65tavr6g7"]
+
+[ext_resource type="Script" uid="uid://cv0n6my10hsrd" path="res://entities/fog_of_war/fog_of_war.gd" id="1_gaegb"]
+[ext_resource type="PackedScene" uid="uid://dwfahhxth4su1" path="res://entities/fog/fog.tscn" id="2_00om2"]
+[ext_resource type="Texture2D" uid="uid://ti5lhm25lleg" path="res://entities/fog/fog.png" id="3_3uomr"]
+
+[node name="FogOfWar" type="TextureRect"]
+z_index = 2
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("3_3uomr")
+script = ExtResource("1_gaegb")
+fog = ExtResource("2_00om2")

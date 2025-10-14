@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://du44uvfexbik5"]
+[gd_scene load_steps=23 format=4 uid="uid://du44uvfexbik5"]
 
 [ext_resource type="Texture2D" uid="uid://boek7edbjf7tb" path="res://assets/sprites/tilemap/dirt_overlay.png" id="1_v3t81"]
 [ext_resource type="Shader" uid="uid://b8863mjerw8wy" path="res://assets/shaders/tilemap.gdshader" id="2_hpx1r"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cq557m1o1by3b" path="res://ui/UI.tscn" id="11_xd6np"]
 [ext_resource type="PackedScene" uid="uid://bb4aayicyw0yx" path="res://entities/teleport/teleport.tscn" id="12_x11ce"]
 [ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/menu/background-tiles.png" id="13_hpx1r"]
+[ext_resource type="PackedScene" uid="uid://bmsl65tavr6g7" path="res://entities/fog_of_war/fog_of_war.tscn" id="14_n4282"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_247n0"]
 shader = ExtResource("2_hpx1r")
@@ -274,3 +275,10 @@ texture = ExtResource("13_hpx1r")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 texture_filter = 1
 navigation_polygon = SubResource("NavigationPolygon_hpx1r")
+
+[node name="FogOfWar" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_n4282")]
+offset_left = -1489.0
+offset_top = -791.0
+offset_right = 1488.0
+offset_bottom = 788.0
+player = NodePath("../Player")
