@@ -1,13 +1,13 @@
 extends Area2D
 class_name Churros
 
-func _ready():
-	connect("body_entered", Callable(self, "_on_area_2d_body_entered"))
-	
+@export var bullets_amount: int = 5
 
-func _on_area_2d_body_entered(body):
+func _ready():
+	connect("body_entered", Callable(self, "_on_body_entered"))
+
+func _on_body_entered(body):
 	if body is Player:
-		queue_free()
+		GlobalStats.add_churros_bullets(bullets_amount)
 		SoundPlayer.play_sound(SoundPlayer.PICKUP)
-		
-		GlobalStats.add_churros_bullets(5)
+		queue_free()
