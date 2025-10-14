@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx1sm7lkyltsj"]
+
+[ext_resource type="Texture2D" uid="uid://dy1qdantxnbry" path="res://entities/magma_stone/magma_stone.png" id="1_jmi6p"]
+[ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="2_4lx0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w10ko"]
+size = Vector2(16, 12)
+
+[node name="Stone" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jmi6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_w10ko")
+
+[node name="ShadowComponent" parent="." instance=ExtResource("2_4lx0j")]
+position = Vector2(0, 6.0000005)
+scale = Vector2(0.61952424, 0.5158225)
