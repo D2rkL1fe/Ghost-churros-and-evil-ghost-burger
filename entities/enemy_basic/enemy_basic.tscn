@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://uq7pcty8pgyk"]
+[gd_scene load_steps=28 format=3 uid="uid://uq7pcty8pgyk"]
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6fxkbsyvt37f" path="res://components/HealthBarComponent/health_bar_component.tscn" id="6_ed0gp"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="9_3mun3"]
 [ext_resource type="PackedScene" uid="uid://c4d0k13qfio8c" path="res://components/DialogComponent/dialog_component.tscn" id="10_k67v4"]
+[ext_resource type="AudioStream" uid="uid://um2kp0wi7aw" path="res://assets/sfx/explosion.wav" id="11_ylhma"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ruqu"]
 atlas = ExtResource("1_eilgt")
@@ -118,7 +119,7 @@ scale_min = 0.39999998
 scale_max = 0.79999995
 color_ramp = SubResource("GradientTexture1D_y300u")
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_5ve1f")
 health_bar = NodePath("HealthBarComponent")
@@ -169,3 +170,13 @@ offset_left = 19.0
 offset_top = -20.0
 offset_right = 19.0
 offset_bottom = -20.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 2.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="BlastSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ylhma")
