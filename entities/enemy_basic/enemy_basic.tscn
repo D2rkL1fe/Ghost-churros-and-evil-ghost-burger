@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bc1td6ugelfnv" path="res://entities/enemy_basic/enemy_basic.gd" id="1_5ve1f"]
 [ext_resource type="Texture2D" uid="uid://bmuai4oqjtwg4" path="res://entities/enemy_basic/idle/enemy_basic_idle.png" id="1_eilgt"]
-[ext_resource type="Texture2D" uid="uid://7g5dymi7nky2" path="res://entities/enemy_basic/fire_ring.png" id="3_64cy1"]
+[ext_resource type="Texture2D" uid="uid://7g5dymi7nky2" path="res://entities/enemy_basic/shockwave/fire_ring.png" id="3_64cy1"]
 [ext_resource type="Texture2D" uid="uid://c2s4abbkqeude" path="res://entities/enemy_basic/run/enemy_basic_run.png" id="3_ypg6x"]
-[ext_resource type="Texture2D" uid="uid://u37p1lj63k7m" path="res://entities/enemy_basic/pixel_art_small.png" id="4_64cy1"]
-[ext_resource type="Texture2D" uid="uid://bugjtc6of30sj" path="res://assets/sprites/health_bar/under.png" id="6_ed0gp"]
-[ext_resource type="Texture2D" uid="uid://3u45di088whm" path="res://assets/sprites/health_bar/border.png" id="7_3mun3"]
-[ext_resource type="Texture2D" uid="uid://dlng5jifkt2rs" path="res://assets/sprites/health_bar/progress.png" id="8_k67v4"]
+[ext_resource type="Texture2D" uid="uid://u37p1lj63k7m" path="res://entities/enemy_basic/shockwave/pixel_art_small.png" id="4_64cy1"]
+[ext_resource type="PackedScene" uid="uid://b6fxkbsyvt37f" path="res://components/HealthBarComponent/health_bar_component.tscn" id="6_ed0gp"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="9_3mun3"]
+[ext_resource type="PackedScene" uid="uid://c4d0k13qfio8c" path="res://components/DialogComponent/dialog_component.tscn" id="10_k67v4"]
+[ext_resource type="AudioStream" uid="uid://um2kp0wi7aw" path="res://assets/sfx/explosion.wav" id="11_ylhma"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ruqu"]
 atlas = ExtResource("1_eilgt")
@@ -120,12 +120,15 @@ scale_max = 0.79999995
 color_ramp = SubResource("GradientTexture1D_y300u")
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Enemy"]]
+position = Vector2(0, -8)
 collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_5ve1f")
-health_bar = NodePath("HealthBar")
+health_bar = NodePath("HealthBarComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_y300u")
 animation = &"run"
 autoplay = "idle"
@@ -136,11 +139,15 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_eilgt")
 
 [node name="Shockwave" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Shockwave"]
+texture_filter = 1
 position = Vector2(2.2499974, -1.1920929e-06)
 scale = Vector2(0.72656244, 0.71875)
 texture = ExtResource("3_64cy1")
+region_rect = Rect2(0, 0, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shockwave"]
 position = Vector2(1, 0)
@@ -155,16 +162,30 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_5ve1f")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -20.0
+[node name="HealthBarComponent" parent="." instance=ExtResource("6_ed0gp")]
 offset_top = -24.0
-offset_right = -19.0
-offset_bottom = -23.0
-value = 100.0
-texture_under = ExtResource("6_ed0gp")
-texture_over = ExtResource("7_3mun3")
-texture_progress = ExtResource("8_k67v4")
+offset_bottom = -18.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ShadowComponent" parent="." instance=ExtResource("9_3mun3")]
 position = Vector2(0, 6.9999995)
 scale = Vector2(0.5847378, 0.41596472)
+
+[node name="DialogComponent" parent="." instance=ExtResource("10_k67v4")]
+offset_left = 19.0
+offset_top = -20.0
+offset_right = 19.0
+offset_bottom = -20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="BlastSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ylhma")
+
+[connection signal="body_entered" from="Shockwave" to="." method="_on_shockwave_body_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxmj6jsjg1wof"
-path="res://.godot/imported/fog.png-9f5e978e287941fb97a6cfbc9af33925.ctex"
+uid="uid://p6281mpyy6ep"
+path="res://.godot/imported/dirt_overlay1.png-64ebf48789bdb80c3d07ad2863790d96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/the_beginning/fog.png"
-dest_files=["res://.godot/imported/fog.png-9f5e978e287941fb97a6cfbc9af33925.ctex"]
+source_file="res://scenes/the_beginning/dirt_overlays/dirt_overlay1.png"
+dest_files=["res://.godot/imported/dirt_overlay1.png-64ebf48789bdb80c3d07ad2863790d96.ctex"]
 
 [params]
 

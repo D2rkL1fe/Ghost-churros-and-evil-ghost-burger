@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vvcq2svx4w6u"
-path="res://.godot/imported/no_health.png-083a11ffcd0a309a86edac8975d579fd.ctex"
+uid="uid://p07812gckq0c"
+path="res://.godot/imported/big_dialog.png-0942f7fe67ec2cd22f79be9ee4ea0847.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemy_basic/no_health.png"
-dest_files=["res://.godot/imported/no_health.png-083a11ffcd0a309a86edac8975d579fd.ctex"]
+source_file="res://assets/sprites/big_dialog.png"
+dest_files=["res://.godot/imported/big_dialog.png-0942f7fe67ec2cd22f79be9ee4ea0847.ctex"]
 
 [params]
 

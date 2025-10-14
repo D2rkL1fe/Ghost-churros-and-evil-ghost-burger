@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfhr3y3kqkw5b"
-path="res://.godot/imported/magma_stone.png-766d678e59b2b6e892d8def587a84ed7.ctex"
+uid="uid://bdurqkrgpsh6p"
+path="res://.godot/imported/tilemap-basic.png-b106688b055db8b27831e0e661039549.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/magma_stone/magma_stone.png"
-dest_files=["res://.godot/imported/magma_stone.png-766d678e59b2b6e892d8def587a84ed7.ctex"]
+source_file="res://assets/sprites/other/tilemap-basic.png"
+dest_files=["res://.godot/imported/tilemap-basic.png-b106688b055db8b27831e0e661039549.ctex"]
 
 [params]
 

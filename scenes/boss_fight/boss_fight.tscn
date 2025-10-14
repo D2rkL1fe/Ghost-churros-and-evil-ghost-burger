@@ -1,40 +1,23 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-[gd_scene load_steps=4 format=3 uid="uid://dr2yyjrovv7b2"]
+[gd_scene load_steps=17 format=4 uid="uid://dr2yyjrovv7b2"]
 =======
 [gd_scene load_steps=17 format=4 uid="uid://dr2yyjrovv7b2"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=17 format=4 uid="uid://dr2yyjrovv7b2"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=17 format=4 uid="uid://dr2yyjrovv7b2"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=17 format=4 uid="uid://dr2yyjrovv7b2"]
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://boek7edbjf7tb" path="res://assets/sprites/tilemap/dirt_overlay.png" id="1_mrgby"]
 [ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="1_tetx3"]
 [ext_resource type="PackedScene" uid="uid://btoh8h42i88yn" path="res://entities/burger_boss/burger_boss.tscn" id="2_21wde"]
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
+
+
+
 [ext_resource type="Shader" uid="uid://b8863mjerw8wy" path="res://assets/shaders/tilemap.gdshader" id="2_s365f"]
 [ext_resource type="PackedScene" uid="uid://dahkdou1cgc4w" path="res://entities/churros/churros.tscn" id="3_21wde"]
 [ext_resource type="PackedScene" uid="uid://cx1sm7lkyltsj" path="res://entities/magma_stone/magma_stone.tscn" id="3_72ieb"]
 [ext_resource type="PackedScene" uid="uid://cq557m1o1by3b" path="res://ui/UI.tscn" id="4_5iyxc"]
->>>>>>> Stashed changes
+
+
+[ext_resource type="PackedScene" uid="uid://dahkdou1cgc4w" path="res://entities/churros/churros.tscn" id="3_21wde"]
+[ext_resource type="PackedScene" uid="uid://cq557m1o1by3b" path="res://ui/UI.tscn" id="4_5iyxc"]
+
 
 [sub_resource type="Environment" id="Environment_tetx3"]
 background_mode = 3
@@ -228,19 +211,9 @@ position = Vector2(-1, 6)
 [node name="BurgerBoss" parent="." instance=ExtResource("2_21wde")]
 position = Vector2(118, -12)
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tetx3")
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 [node name="Churro" type="Node" parent="."]
 
 [node name="Churros" parent="Churro" instance=ExtResource("3_21wde")]
@@ -253,4 +226,15 @@ position = Vector2(-11, -61)
 [node name="Churros4" parent="Churro" instance=ExtResource("3_21wde")]
 
 [node name="UI" parent="." instance=ExtResource("4_5iyxc")]
->>>>>>> Stashed changes
+
+
+[node name="Churros" parent="." instance=ExtResource("3_21wde")]
+position = Vector2(-11, -61)
+
+[node name="Churros2" parent="." instance=ExtResource("3_21wde")]
+
+[node name="Churros3" parent="." instance=ExtResource("3_21wde")]
+
+[node name="Churros4" parent="." instance=ExtResource("3_21wde")]
+
+[node name="UI" parent="." instance=ExtResource("4_5iyxc")]

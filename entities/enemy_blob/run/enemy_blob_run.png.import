@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u37p1lj63k7m"
-path="res://.godot/imported/pixel_art_small.png-d341d90afb75386ad44d2451fef04a8c.ctex"
+uid="uid://dlcc7ybxq85o0"
+path="res://.godot/imported/enemy_blob_run.png-99cded5d04d8134c17fa0bb60ac3882d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemy_basic/pixel_art_small.png"
-dest_files=["res://.godot/imported/pixel_art_small.png-d341d90afb75386ad44d2451fef04a8c.ctex"]
+source_file="res://entities/enemy_blob/run/enemy_blob_run.png"
+dest_files=["res://.godot/imported/enemy_blob_run.png-99cded5d04d8134c17fa0bb60ac3882d.ctex"]
 
 [params]
 

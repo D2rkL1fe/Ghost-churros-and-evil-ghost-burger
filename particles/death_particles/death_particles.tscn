@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c84hwmb0dm4vj"]
+
+[sub_resource type="Curve" id="Curve_1bofw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18939394, 1), 0.0, 0.0, 0, 0, Vector2(0.8030303, 1), 0.0, 0.0, 0, 0, Vector2(0.8030403, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_8v8hh"]
+curve = SubResource("Curve_1bofw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d07e6"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 25.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.59999996
+scale_max = 1.4
+color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+alpha_curve = SubResource("CurveTexture_8v8hh")
+
+[node name="DeathParticles" type="GPUParticles2D"]
+amount = 24
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_d07e6")

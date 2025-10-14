@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://xk6dawr05fvj"]
 
-[ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="1_klgdb"]
+[ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/menu/background-tiles.png" id="1_klgdb"]
 [ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_mcvr8"]
 [ext_resource type="Script" uid="uid://dxcorw122thxi" path="res://scenes/menu/menu.gd" id="2_e0arn"]
-[ext_resource type="Shader" uid="uid://dgrrvbgh12yxy" path="res://scenes/menu/background_tile.gdshader" id="3_037ec"]
-[ext_resource type="Shader" uid="uid://bphvkhbrisuvs" path="res://scenes/menu/wavy_text.gdshader" id="5_y1o0p"]
+[ext_resource type="Shader" uid="uid://dgrrvbgh12yxy" path="res://assets/shaders/background_tile.gdshader" id="3_037ec"]
+[ext_resource type="Shader" uid="uid://bphvkhbrisuvs" path="res://assets/shaders/wavy_text.gdshader" id="5_y1o0p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y1o0p"]
 shader = ExtResource("3_037ec")

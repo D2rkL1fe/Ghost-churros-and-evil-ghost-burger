@@ -1,4 +1,4 @@
 extends Control
 
 func transition():
-	Global.transition("res://scenes/main/main.tscn")
+	Global.transition("res://scenes/the_beginning/the_beginning.tscn")

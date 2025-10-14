@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx1sm7lkyltsj"]
+[gd_scene load_steps=4 format=3 uid="uid://c0a6ckms87twc"]
 
-[ext_resource type="Texture2D" uid="uid://dy1qdantxnbry" path="res://entities/magma_stone/magma_stone.png" id="1_jmi6p"]
+[ext_resource type="Texture2D" uid="uid://cfhr3y3kqkw5b" path="res://entities/magma_stone/magma_stone.png" id="1_jmi6p"]
 [ext_resource type="PackedScene" uid="uid://w1mp0ti7uk20" path="res://components/ShadowComponent/shadow_component.tscn" id="2_4lx0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w10ko"]

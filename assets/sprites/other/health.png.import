@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bimuwoeh12xue"
-path="res://.godot/imported/overlay.png-84857cbb591192690b6450d172acf14a.ctex"
+uid="uid://dh6esxi6t745e"
+path="res://.godot/imported/health.png-223b5cd42c3b0f4c20e480210a8d57db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/main/overlay.png"
-dest_files=["res://.godot/imported/overlay.png-84857cbb591192690b6450d172acf14a.ctex"]
+source_file="res://assets/sprites/other/health.png"
+dest_files=["res://.godot/imported/health.png-223b5cd42c3b0f4c20e480210a8d57db.ctex"]
 
 [params]
 

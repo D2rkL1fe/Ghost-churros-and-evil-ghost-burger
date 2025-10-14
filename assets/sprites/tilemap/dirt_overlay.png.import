@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dowk2gnfsbgui"
-path="res://.godot/imported/background-tiles.png-db495f2d404280e57e6c8fe9e91203c8.ctex"
+uid="uid://boek7edbjf7tb"
+path="res://.godot/imported/dirt_overlay.png-15b1bc43eddf1d58be643089b5bba4d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/background-tiles.png"
-dest_files=["res://.godot/imported/background-tiles.png-db495f2d404280e57e6c8fe9e91203c8.ctex"]
+source_file="res://assets/sprites/tilemap/dirt_overlay.png"
+dest_files=["res://.godot/imported/dirt_overlay.png-15b1bc43eddf1d58be643089b5bba4d2.ctex"]
 
 [params]
 

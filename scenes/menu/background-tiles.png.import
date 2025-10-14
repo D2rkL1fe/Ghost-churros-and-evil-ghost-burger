@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlcc7ybxq85o0"
-path="res://.godot/imported/enemy_blob_run.png-c7cec78489b1485050f9eb6de9276775.ctex"
+uid="uid://dowk2gnfsbgui"
+path="res://.godot/imported/background-tiles.png-b49fe634c443a836246676d481f344e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemy_blos/run/enemy_blob_run.png"
-dest_files=["res://.godot/imported/enemy_blob_run.png-c7cec78489b1485050f9eb6de9276775.ctex"]
+source_file="res://scenes/menu/background-tiles.png"
+dest_files=["res://.godot/imported/background-tiles.png-b49fe634c443a836246676d481f344e3.ctex"]
 
 [params]
 

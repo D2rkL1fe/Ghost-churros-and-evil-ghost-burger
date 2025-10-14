@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jub4b4je51y"
-path="res://.godot/imported/lazer_beam_circle.png-3a9d762b8e489884f60000580a66c362.ctex"
+uid="uid://u37p1lj63k7m"
+path="res://.godot/imported/pixel_art_small.png-d659a664ca7df2418e5bcf7ea4624f88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/burger_boss/lazer_beam_circle.png"
-dest_files=["res://.godot/imported/lazer_beam_circle.png-3a9d762b8e489884f60000580a66c362.ctex"]
+source_file="res://entities/enemy_basic/shockwave/pixel_art_small.png"
+dest_files=["res://.godot/imported/pixel_art_small.png-d659a664ca7df2418e5bcf7ea4624f88.ctex"]
 
 [params]
 

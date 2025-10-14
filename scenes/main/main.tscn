@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://crnxgfctb87i8"]
+[gd_scene load_steps=24 format=4 uid="uid://crnxgfctb87i8"]
 
-[ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="1_6q06x"]
-[ext_resource type="Shader" uid="uid://b8863mjerw8wy" path="res://scenes/main/tilemap.gdshader" id="2_blune"]
+[ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/menu/background-tiles.png" id="1_6q06x"]
+[ext_resource type="Shader" uid="uid://b8863mjerw8wy" path="res://assets/shaders/tilemap.gdshader" id="2_blune"]
 [ext_resource type="PackedScene" uid="uid://c51eabamqukgs" path="res://entities/player/player.tscn" id="2_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://dahkdou1cgc4w" path="res://entities/churros/churros.tscn" id="3_hujxm"]
-[ext_resource type="Texture2D" uid="uid://bimuwoeh12xue" path="res://scenes/main/overlay.png" id="3_th5th"]
-[ext_resource type="Texture2D" uid="uid://dd0ax70go5v7x" path="res://scenes/main/base_tilemap.png" id="4_7smn1"]
+[ext_resource type="Texture2D" uid="uid://bimuwoeh12xue" path="res://assets/sprites/tilemap/grass_overlay.png" id="3_th5th"]
+[ext_resource type="Texture2D" uid="uid://dd0ax70go5v7x" path="res://assets/sprites/tilemap/base_tilemap.png" id="4_7smn1"]
 [ext_resource type="Script" uid="uid://bqsmfc7egdln" path="res://ui/UI.gd" id="5_b1x3f"]
 [ext_resource type="Texture2D" uid="uid://b5nq3iacguo78" path="res://entities/stone/stone.png" id="5_th5th"]
 [ext_resource type="PackedScene" uid="uid://dg802yk8wmcnx" path="res://entities/stone/stone.tscn" id="6_7smn1"]
@@ -174,6 +174,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hxu8e")
 sources/1 = SubResource("TileSetScenesCollectionSource_nvumn")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_raeie"]
+vertices = PackedVector2Array(-42, 6, -42, 6.859375, -48.820313, -20.226563, -298, 46.867188, -304.0625, 73.15625, -309.71875, -141.86719, -298, 22, 310, 149.71875, -210.82813, 135.64063, -62.492188, 90, 42, 90, 310, -134.11719, 42, 14, -154, 7.96875, -262, 31.96875, -262, 22, -154, -2, 6, 14, 6, 54, -6, 54, -6, 6, -71.609375, 11.9921875, -118, 8.1171875, -118, -2, -64.671875, -19.96875)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 7, 10, 12), PackedInt32Array(5, 11, 12, 2), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(15, 6, 5, 16), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(20, 0, 2), PackedInt32Array(23, 16, 5, 24), PackedInt32Array(12, 17, 20), PackedInt32Array(2, 24, 5), PackedInt32Array(2, 12, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-320, -152, -312, 152, -288, 48, -288, 32, -272, 32, -272, 48, -288, 48, -144, 16, -144, 8, -128, 8, -128, 16, -144, 16, -48, 24, -48, 32, -64, 32, -64, 24, -56.577118, -10.101746, -48, 24, -32, 64, -32, 16, -16, 16, -16, 64, 16, 64, 16, 24, 32, 24, 32, 80, -64, 80, -272, 144, 320, 160, 320, -144)])
+agent_radius = 5.0
+
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -268,5 +274,8 @@ text = "Churros: 0"
 
 [node name="Teleport" parent="." instance=ExtResource("13_th5th")]
 position = Vector2(218, 0)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_raeie")
 
 [connection signal="visibility_changed" from="UI" to="Player" method="_on_canvas_layer_visibility_changed"]
