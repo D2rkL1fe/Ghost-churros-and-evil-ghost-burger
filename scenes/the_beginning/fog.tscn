@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw3bitvwfwrch"]
+
+[ext_resource type="Texture2D" path="res://scenes/the_beginning/fog.png" id="1_kepmm"]
+
+[node name="Fog" type="Sprite2D"]
+z_index = 2
+texture = ExtResource("1_kepmm")
