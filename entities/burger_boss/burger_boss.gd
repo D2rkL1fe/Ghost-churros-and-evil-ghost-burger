@@ -23,7 +23,7 @@ class_name BurgerBoss
 @export var move_change_interval: float = 2.0
 @export var engage_distance: float = 600.0
 @export var aggressive_distance: float = 900.0
-@export var max_hp: int = 1000
+@export var max_hp: int = 700
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $HealthBarComponent
