@@ -10,9 +10,12 @@ class_name BurgerBoss
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 @export var spawn_offset: float = 20.0           # spawn outside boss collider
 @export var bullet_bounces: int = 3
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======

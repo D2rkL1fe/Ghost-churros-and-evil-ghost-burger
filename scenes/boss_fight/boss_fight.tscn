@@ -1,7 +1,11 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://dr2yyjrovv7b2"]
+=======
+[gd_scene load_steps=17 format=4 uid="uid://dr2yyjrovv7b2"]
+>>>>>>> Stashed changes
 =======
 [gd_scene load_steps=17 format=4 uid="uid://dr2yyjrovv7b2"]
 >>>>>>> Stashed changes
@@ -18,7 +22,10 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -224,9 +231,12 @@ position = Vector2(118, -12)
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tetx3")
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======

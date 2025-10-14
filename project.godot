@@ -23,6 +23,7 @@ DiamondTransition="*res://transitions/DiamondTransition/diamond_transition.tscn"
 GlobalStats="*res://globals/GlobalStats.gd"
 Global="*res://globals/Global.gd"
 Settings="*res://ui/settings/settings.tscn"
+Particles="*res://globals/Particles.gd"
 
 [display]
 
@@ -77,6 +78,7 @@ shoot={
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="PlayerProjectile"
 2d_physics/layer_5="EnemyProjectile"
+2d_physics/layer_6="EnemyBoss"
 
 [rendering]
 
