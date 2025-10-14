@@ -112,13 +112,15 @@ func _fire_bullets():
 		get_tree().current_scene.add_child(b)
 
 func _fire_laser_at_player():
-	if not burger_laser_scene or not player: return
+	if not burger_laser_scene or not player:
+		return
+
 	var dir = (player.global_position - global_position).normalized()
 	var l = burger_laser_scene.instantiate()
-	l.global_position = global_position + dir * spawn_offset * 0.3
-	if "setup" in l:
-		l.setup(dir, laser_speed, laser_duration)
+	l.global_position = global_position + dir * spawn_offset
+	l.setup(dir)
 	get_tree().current_scene.add_child(l)
+
 
 func take_damage(amount: int):
 	hp -= amount
