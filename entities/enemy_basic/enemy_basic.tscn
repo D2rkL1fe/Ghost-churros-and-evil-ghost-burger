@@ -120,6 +120,7 @@ scale_max = 0.79999995
 color_ramp = SubResource("GradientTexture1D_y300u")
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Enemy"]]
+position = Vector2(0, -8)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_5ve1f")
@@ -127,6 +128,7 @@ health_bar = NodePath("HealthBarComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_y300u")
 animation = &"run"
 autoplay = "idle"
@@ -141,9 +143,11 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Shockwave"]
+texture_filter = 1
 position = Vector2(2.2499974, -1.1920929e-06)
 scale = Vector2(0.72656244, 0.71875)
 texture = ExtResource("3_64cy1")
+region_rect = Rect2(0, 0, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shockwave"]
 position = Vector2(1, 0)
@@ -161,6 +165,7 @@ process_material = SubResource("ParticleProcessMaterial_5ve1f")
 [node name="HealthBarComponent" parent="." instance=ExtResource("6_ed0gp")]
 offset_top = -24.0
 offset_bottom = -18.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ShadowComponent" parent="." instance=ExtResource("9_3mun3")]
 position = Vector2(0, 6.9999995)
@@ -171,10 +176,11 @@ offset_left = 19.0
 offset_top = -20.0
 offset_right = 19.0
 offset_bottom = -20.0
+metadata/_edit_use_anchors_ = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 4.0
-target_desired_distance = 2.0
+path_desired_distance = 3.0
+target_desired_distance = 3.0
 path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true
