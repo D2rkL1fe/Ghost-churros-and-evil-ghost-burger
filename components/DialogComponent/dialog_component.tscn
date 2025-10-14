@@ -56,8 +56,8 @@ _data = {
 &"idle": SubResource("Animation_yfisq")
 }
 
-[node name="Control" type="Control" node_paths=PackedStringArray("label", "anim")]
-z_index = 2
+[node name="DialogComponent" type="Control" node_paths=PackedStringArray("label", "anim")]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

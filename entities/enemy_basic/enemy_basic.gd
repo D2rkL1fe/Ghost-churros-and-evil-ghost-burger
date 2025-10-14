@@ -13,7 +13,7 @@ extends CharacterBody2D
 @export var orbit_distance: float = 64.0
 @export var orbit_speed: float = 1.6
 @export var orbit_spread: float = 0.9
-@export var health: int = 100
+@export var health: int = 60
 @export var health_bar: TextureProgressBar
 @export var dialog_scene: PackedScene
 
@@ -53,6 +53,8 @@ func _ready() -> void:
 
 	player = _find_node_recursive(get_tree().get_current_scene(), "Player")
 	churros_list = _find_all_churros(get_tree().get_current_scene())
+
+	health_bar.max_value = health
 
 	if aura_sprite:
 		aura_sprite.visible = false

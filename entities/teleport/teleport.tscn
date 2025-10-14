@@ -99,6 +99,8 @@ color = Color(0.21960784, 0.7058824, 0.8784314, 1)
 alpha_curve = SubResource("CurveTexture_opt1k")
 
 [node name="Teleport" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_62ulm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
