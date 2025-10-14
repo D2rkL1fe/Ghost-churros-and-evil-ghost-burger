@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmsl65tavr6g7"]
+
+[ext_resource type="Script" uid="uid://cv0n6my10hsrd" path="res://entities/fog_of_war/fog_of_war.gd" id="1_gaegb"]
+
+[node name="FogOfWar" type="Node2D"]
+script = ExtResource("1_gaegb")

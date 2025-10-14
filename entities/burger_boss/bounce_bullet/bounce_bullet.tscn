@@ -7,7 +7,7 @@
 radius = 8.0
 
 [node name="Bounce_bullet" type="RigidBody2D"]
-collision_layer = 8
+collision_layer = 16
 collision_mask = 3
 gravity_scale = 0.0
 linear_damp = 0.1
@@ -15,11 +15,6 @@ script = ExtResource("1_32xli")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xeita")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_iujwt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_iujwt")

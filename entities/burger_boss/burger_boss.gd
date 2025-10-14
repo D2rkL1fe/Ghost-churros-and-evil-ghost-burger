@@ -7,8 +7,15 @@ class_name BurgerBoss
 @export var bullet_speed: float = 200.0
 @export var bullet_damage: int = 15
 @export var bullet_count: int = 12
+<<<<<<< Updated upstream
 @export var spawn_offset: float = 20.0           # spawn outside boss collider
 @export var bullet_bounces: int = 3
+=======
+@export var spawn_offset: float = 20.0
+@export var bullet_bounces: int = 10
+@export var laser_speed: float = 250.0
+@export var laser_duration: float = 0.6
+>>>>>>> Stashed changes
 
 var _time_since_last_shot: float = 0.0
 var rng := RandomNumberGenerator.new()

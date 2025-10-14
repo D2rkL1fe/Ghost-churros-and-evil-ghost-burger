@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=21 format=4 uid="uid://du44uvfexbik5"]
+=======
+[gd_scene load_steps=25 format=4 uid="uid://du44uvfexbik5"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://boek7edbjf7tb" path="res://scenes/the_beginning/dirt_overlays/dirt_overlay_real.png" id="1_v3t81"]
 [ext_resource type="Shader" uid="uid://b8863mjerw8wy" path="res://scenes/main/tilemap.gdshader" id="2_hpx1r"]
@@ -12,7 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://uq7pcty8pgyk" path="res://entities/enemy_basic/enemy_basic.tscn" id="10_aa22y"]
 [ext_resource type="PackedScene" uid="uid://cq557m1o1by3b" path="res://ui/UI.tscn" id="11_xd6np"]
 [ext_resource type="PackedScene" uid="uid://bb4aayicyw0yx" path="res://entities/teleport/teleport.tscn" id="12_x11ce"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/background-tiles.png" id="13_hpx1r"]
+=======
+[ext_resource type="Texture2D" uid="uid://dowk2gnfsbgui" path="res://scenes/menu/background-tiles.png" id="13_hpx1r"]
+[ext_resource type="PackedScene" uid="uid://bmsl65tavr6g7" path="res://entities/fog_of_war/fog_of_war.tscn" id="14_n4282"]
+>>>>>>> Stashed changes
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_247n0"]
 shader = ExtResource("2_hpx1r")
@@ -172,6 +181,23 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_v3t81")
 sources/1 = SubResource("TileSetScenesCollectionSource_hpx1r")
 
+<<<<<<< Updated upstream
+=======
+[sub_resource type="Gradient" id="Gradient_hpx1r"]
+offsets = PackedFloat32Array(0.88666666, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n4282"]
+gradient = SubResource("Gradient_hpx1r")
+width = 270
+height = 270
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8364486, 0.24299066)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hpx1r"]
+
+>>>>>>> Stashed changes
 [node name="TheBeginning" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -255,6 +281,27 @@ position = Vector2(-527, -436)
 
 [node name="UI" parent="." instance=ExtResource("11_xd6np")]
 
+[node name="TextureRect" type="TextureRect" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -135.0
+offset_right = 135.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture2D_n4282")
+
+[node name="Fog" type="TextureRect" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Teleport" parent="." instance=ExtResource("12_x11ce")]
 position = Vector2(918, -40)
 
@@ -265,3 +312,11 @@ z_index = 900
 position = Vector2(-1456, 513)
 scale = Vector2(7.03125, 24.21875)
 texture = ExtResource("13_hpx1r")
+<<<<<<< Updated upstream
+=======
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_hpx1r")
+
+[node name="FogOfWar" parent="." instance=ExtResource("14_n4282")]
+>>>>>>> Stashed changes

@@ -45,9 +45,9 @@ func _start_lifetime_timer() -> void:
 	)
 
 func _integrate_forces(state) -> void:
-	# Keep constant speed
-	if linear_velocity.length() > 0:
-		linear_velocity = linear_velocity.normalized() * speed
+	## Keep constant speed
+	#if linear_velocity.length() > 0:
+		#linear_velocity = linear_velocity.normalized() * speed
 
 	# Handle bounces
 	var contacts = state.get_contact_count()
