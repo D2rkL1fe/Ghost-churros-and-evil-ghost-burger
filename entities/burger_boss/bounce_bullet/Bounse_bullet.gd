@@ -85,6 +85,8 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player") or body.name == "Player":
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
+			
+			SoundPlayer.play_sound(SoundPlayer.HURT)
 		if body.has_method("apply_knockback"):
 			var push_dir = (body.global_position - global_position).normalized()
 			body.apply_knockback(push_dir * knockback_force)

@@ -190,7 +190,8 @@ func take_damage(damage: int) -> void:
 		die()
 
 func die() -> void:
-	# Particles.create_particles(global_position)
+	SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
+	Particles.create_particles(global_position)
 	
 	queue_free()
 

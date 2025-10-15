@@ -71,13 +71,14 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 min_value = -60.0
-max_value = 20.0
+max_value = 10.0
 
 [node name="SliderMusic" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxSlider"]
 layout_mode = 2
 size_flags_vertical = 3
 min_value = -60.0
-max_value = 20.0
+max_value = 10.0
+value = -15.0
 
 [node name="VBoxCheck" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

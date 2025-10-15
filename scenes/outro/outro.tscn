@@ -1,14 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://cen08iwcbt6wr"]
+[gd_scene load_steps=7 format=3 uid="uid://cen08iwcbt6wr"]
 
+[ext_resource type="Texture2D" uid="uid://cndlc33h6jvus" path="res://entities/churros/default/churros.png" id="1_6ls5a"]
 [ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_foig8"]
 [ext_resource type="Script" uid="uid://cgcaxbsxs7e2j" path="res://ui/settings/settings.gd" id="2_nacx8"]
 [ext_resource type="PackedScene" uid="uid://vw45rcktv2je" path="res://components/ButtonComponent/button_component.tscn" id="3_c450i"]
+[ext_resource type="Shader" uid="uid://dgrrvbgh12yxy" path="res://assets/shaders/background_tile.gdshader" id="3_lglfs"]
 
-[node name="Settings" type="CanvasLayer"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uikrw"]
+shader = ExtResource("3_lglfs")
+shader_parameter/speed = Vector2(-0.8, -0.2)
+shader_parameter/scale = 0.5
+shader_parameter/tint = Color(1, 1, 0.81960785, 1)
+
+[node name="Outro" type="Node2D"]
 process_mode = 3
-layer = 10
 
-[node name="Settings" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Settings" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,52 +27,67 @@ grow_vertical = 2
 theme = ExtResource("1_foig8")
 script = ExtResource("2_nacx8")
 
-[node name="PanelContainer" type="PanelContainer" parent="Settings"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Settings"]
+modulate = Color(0, 0.8900428, 0.5290847, 1)
+material = SubResource("ShaderMaterial_uikrw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6ls5a")
+stretch_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Settings"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.0
-offset_top = -80.0
-offset_right = 89.0
-offset_bottom = 80.0
+offset_left = -97.0
+offset_top = -63.0
+offset_right = 97.0
+offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Settings/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "You Won!"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Churros are now free!"
 horizontal_alignment = 1
 
-[node name="HBoxButton" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxButton" type="VBoxContainer" parent="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Restart" type="Button" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
+[node name="Restart" type="Button" parent="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
+visible = false
 layout_mode = 2
 text = "Restart"
 
-[node name="ButtonComponent" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" instance=ExtResource("3_c450i")]
+[node name="ButtonComponent" parent="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" instance=ExtResource("3_c450i")]
 
-[node name="Menu" type="Button" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
+[node name="Menu" type="Button" parent="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton"]
 layout_mode = 2
 text = "Menu"
 
-[node name="ButtonComponent" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" instance=ExtResource("3_c450i")]
+[node name="ButtonComponent" parent="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" instance=ExtResource("3_c450i")]
 
-[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" to="Settings" method="_on_restart_pressed"]
-[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" to="Settings" method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Restart" to="CanvasLayer/Settings" method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxButton/Menu" to="CanvasLayer/Settings" method="_on_menu_pressed"]
