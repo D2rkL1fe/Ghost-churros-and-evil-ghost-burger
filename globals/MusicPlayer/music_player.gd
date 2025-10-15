@@ -4,6 +4,7 @@ extends Node
 const MEOW = preload("uid://b3ysjvdtlo7p2")
 const DEATH = preload("uid://dtrwrjbh6k1hp")
 const MENU = preload("uid://dpxf36w5wccjl")
+const GAMEPLAY = preload("uid://c8qdj0eyb5q75")
 
 # main music player
 @export var music_player : AudioStreamPlayer

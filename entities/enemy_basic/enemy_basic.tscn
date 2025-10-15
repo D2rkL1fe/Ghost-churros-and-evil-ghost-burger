@@ -183,7 +183,6 @@ path_desired_distance = 3.0
 target_desired_distance = 3.0
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="BlastSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ylhma")
