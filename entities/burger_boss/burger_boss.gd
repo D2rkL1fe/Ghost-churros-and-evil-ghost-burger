@@ -129,6 +129,8 @@ func take_damage(amount: int):
 	if hp <= 0:
 		queue_free()
 		SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
+		
+		Global.transition("res://scenes/outro/outro.tscn")
 
 func _player_health_ratio() -> float:
 	if not player or not ("health" in player and "max_health" in player) or player.max_health <= 0:
