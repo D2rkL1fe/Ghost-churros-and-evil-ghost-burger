@@ -10,6 +10,10 @@ const SELECT = preload("uid://c1u2hqrhsrg3v")
 const TRANSITION = preload("uid://g86slrcoec47")
 const SHOOT = preload("uid://dmcaxlh133wnr")
 const TELEPORT = preload("uid://dvgpriif0rjtc")
+const WHOOSH = preload("uid://d4cd48wa3eyvt")
+
+const WHIIP = preload("uid://c45rupbv8wd3t")
+const WHOOP = preload("uid://6iuhqa88tp6u")
 
 # store all audio/sound players
 var audio_players

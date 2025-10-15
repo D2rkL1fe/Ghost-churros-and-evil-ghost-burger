@@ -1,0 +1,193 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqwggfiop21ya"]
+
+[ext_resource type="Theme" uid="uid://8dujywhdjl3" path="res://assets/themes/default_theme.tres" id="1_teox7"]
+[ext_resource type="Script" uid="uid://b6h8lwelw0hyy" path="res://scenes/intro/intro.gd" id="2_8twl8"]
+[ext_resource type="Texture2D" uid="uid://5ebb8y85cnlk" path="res://output-onlinepngtools.png" id="3_ir5dn"]
+
+[sub_resource type="Animation" id="Animation_ir5dn"]
+resource_name = "in"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1rrv8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yty6"]
+_data = {
+&"RESET": SubResource("Animation_1rrv8"),
+&"in": SubResource("Animation_ir5dn")
+}
+
+[sub_resource type="Animation" id="Animation_teox7"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8twl8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ir5dn"]
+_data = {
+&"RESET": SubResource("Animation_8twl8"),
+&"idle": SubResource("Animation_teox7")
+}
+
+[sub_resource type="Animation" id="Animation_oeh0t"]
+resource_name = "Intro"
+length = 2.9905
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9666667),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(964, 547)]
+}
+
+[sub_resource type="Animation" id="Animation_ae20m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1eg8k"]
+_data = {
+&"Intro": SubResource("Animation_oeh0t"),
+&"RESET": SubResource("Animation_ae20m")
+}
+
+[node name="Intro" type="Control" node_paths=PackedStringArray("story_label", "story_animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_teox7")
+script = ExtResource("2_8twl8")
+story_label = NodePath("PanelContainer/MarginContainer/Story")
+story_animator = NodePath("PanelContainer/MarginContainer/Story/StoryAnimator")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -480.0
+offset_bottom = -270.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ir5dn")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Story" type="Label" parent="PanelContainer/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/paragraph_spacing = -8
+text = "Story starts here..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StoryAnimator" type="AnimationPlayer" parent="PanelContainer/MarginContainer/Story"]
+libraries = {
+&"": SubResource("AnimationLibrary_8yty6")
+}
+
+[node name="Action" type="Label" parent="PanelContainer/MarginContainer"]
+self_modulate = Color(0.94, 0.83284, 0.40420002, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 16
+text = "PRESS ENTER TO CONTINUE"
+
+[node name="ActionAnimator" type="AnimationPlayer" parent="PanelContainer/MarginContainer/Action"]
+libraries = {
+&"": SubResource("AnimationLibrary_ir5dn")
+}
+autoplay = "idle"
+speed_scale = 0.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1eg8k")
+}
+autoplay = "Intro"

@@ -11,4 +11,4 @@ func _process(_delta: float) -> void:
 		animator.play("transition")
 
 func transition():
-	Global.transition("res://scenes/start/start.tscn")
+	Global.transition("res://scenes/intro/intro.tscn")
