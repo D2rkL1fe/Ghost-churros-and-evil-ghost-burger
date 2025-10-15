@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ti5lhm25lleg" path="res://entities/fog/fog.png" id="3_3uomr"]
 
 [node name="FogOfWar" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_right = 64.0
 offset_bottom = 64.0

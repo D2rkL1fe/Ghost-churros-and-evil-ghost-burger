@@ -1,4 +1,10 @@
-extends Sprite2D
+extends Node2D
+
+@onready var аниматор: AnimationPlayer = $AnimationPlayer
+
+func _ready() -> void:
+	# свети 
+	аниматор.speed_scale = randf_range(0.8, 1.2)
 
 var player : Player
 

@@ -6,8 +6,8 @@ extends Control
 
 var offset : float = 50.0
 
-var x_times : int = 100
-var y_times : int = 100
+var x_times : int = 50
+var y_times : int = 50
 
 func _ready():
 	spawn_fog()
@@ -17,8 +17,8 @@ func generate_fog():
 		for y in range(y_times):
 			var instance = fog.instantiate()
 			
-			var x_pos = x * offset - x_times / 2 * offset + randf_range(-16, 16)
-			var y_pos = y * offset - y_times / 2 * offset + randf_range(-16, 16)
+			var x_pos = x * offset - float(x_times) / 2 * offset + randf_range(-16, 16)
+			var y_pos = y * offset - float(y_times) / 2 * offset + randf_range(-16, 16)
 			instance.position = Vector2(x_pos, y_pos)
 			
 			instance.setup(player)

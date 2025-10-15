@@ -7,6 +7,13 @@ var transitioning : bool = false
 signal player_death
 signal transitioned
 
+func _ready() -> void:
+	transitioned.connect(_on_transitioned)
+
+func _on_transitioned():
+	pass
+
+# reload level obviously
 func restart():
 	GlobalStats.churros_counter = 0
 

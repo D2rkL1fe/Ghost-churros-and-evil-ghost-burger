@@ -20,3 +20,5 @@ func start_transition(scene):
 	animator.play_backwards("transition")
 	await animator.animation_finished
 	
+	# emit signal
+	Global.transitioned.emit()
