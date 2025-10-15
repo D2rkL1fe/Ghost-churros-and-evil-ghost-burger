@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://116enysrqa76"]
+
+[ext_resource type="Script" uid="uid://bl60sl3r5es1j" path="res://MinimapBase.gd" id="1_62e2m"]
+[ext_resource type="Shader" uid="uid://doi1xih1bpmi5" path="res://minimap_fog.gdshader" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://k0jpn6skl3n2" path="res://entities/player/player_icon.png" id="3_ee4bf"]
+[ext_resource type="Texture2D" uid="uid://c4daoda11rsll" path="res://entities/enemy_basic/basic_enemy_icon.png" id="4_kbped"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fj5cn"]
+noise_type = 3
+frequency = 0.05
+fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iy58a"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_fj5cn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ee4bf"]
+shader = ExtResource("2_qtu10")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_iy58a")
+shader_parameter/minimap_size = Vector2(512, 512)
+shader_parameter/time = 0.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_62e2m")
+level_size = Vector2(200, 200)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_ee4bf")
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/Node2D"]
+zoom = Vector2(0.1, 0.1)
+
+[node name="PlayerIcon" type="Sprite2D" parent="SubViewportContainer/SubViewport/Node2D"]
+texture = ExtResource("3_ee4bf")
+
+[node name="EnemyIcons" type="Sprite2D" parent="SubViewportContainer/SubViewport/Node2D"]
+texture = ExtResource("4_kbped")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport/Node2D/EnemyIcons"]

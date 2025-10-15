@@ -205,12 +205,10 @@ position = Vector2(118, -12)
 environment = SubResource("Environment_tetx3")
 
 [node name="Churros" parent="." instance=ExtResource("3_21wde")]
-position = Vector2(-11, -61)
+position = Vector2(-2, -4)
 
 [node name="Churros2" parent="." instance=ExtResource("3_21wde")]
 
 [node name="Churros3" parent="." instance=ExtResource("3_21wde")]
-
-[node name="Churros4" parent="." instance=ExtResource("3_21wde")]
 
 [node name="UI" parent="." instance=ExtResource("4_5iyxc")]
