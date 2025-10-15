@@ -42,4 +42,5 @@ func _set_particle_colors(c: Color) -> void:
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.take_damage(20)
+		SoundPlayer.play_sound(SoundPlayer.HURT)
 		queue_free()  

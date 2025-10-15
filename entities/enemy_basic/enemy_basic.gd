@@ -296,6 +296,9 @@ func take_damage(damage: int) -> void:
 		die()
 
 func die() -> void:
+	SoundPlayer.play_sound(SoundPlayer.EXPLOSION)
+	Particles.create_particles(global_position)
+	
 	queue_free()
 
 func apply_knockback(force: Vector2) -> void:
