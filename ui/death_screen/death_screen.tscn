@@ -6,7 +6,6 @@
 
 [node name="DeathScreen" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,12 +38,12 @@ layout_mode = 2
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "You died..."
+text = "You died!"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Mazna was too much for you to handle, noob"
+text = "It was too much for you to handle..."
 horizontal_alignment = 1
 autowrap_mode = 2
 
